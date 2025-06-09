@@ -6,7 +6,10 @@ import TypewriterText from '@/components/TypewriterText'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-0px)] lg:pt-25 flex items-center justify-center text-center px-6 bg-[#FFFEFE] snap-start">
+    <section
+      id="herosection"
+      className="relative min-h-[calc(100vh-0px)] lg:pt-25 flex items-center justify-center text-center px-6 bg-[#FFFEFE] snap-start"
+    >
       {/* Background image */}
       <div className="absolute inset-0 z-0 bg-[url('/bg-hero.png')] bg-cover bg-center opacity-15"></div>
 
