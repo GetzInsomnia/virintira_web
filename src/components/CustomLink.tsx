@@ -27,7 +27,7 @@ export default function CustomLink({
     e.preventDefault()
     if (onClick) onClick()
 
-    let path = typeof href === 'string' ? href : href.pathname || '/'
+    const path = typeof href === 'string' ? href : href.pathname || '/'
 
     const finalQuery = {
       ...(query || {}),
