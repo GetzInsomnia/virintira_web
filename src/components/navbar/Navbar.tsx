@@ -1,7 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useRef, useEffect, useCallback } from 'react'
+import {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useLayoutEffect,
+} from 'react'
 import { usePathname } from 'next/navigation'
 import MegaMenu from './MegaMenu'
 import LanguageSwitcher from './LanguageSwitcher'
@@ -17,6 +23,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const hideTimer = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
+  const headerRef = useRef<HTMLElement | null>(null)
 
   const handleCloseMenu = useCallback(() => {
     setMobileMenuOpen(false)
@@ -58,8 +65,26 @@ export default function Navbar() {
     }
   }
 
+  useLayoutEffect(() => {
+    const setHeight = () => {
+      if (headerRef.current) {
+        document.documentElement.style.setProperty(
+          '--header-height',
+          `${headerRef.current.offsetHeight}px`
+        )
+      }
+    }
+
+    setHeight()
+    window.addEventListener('resize', setHeight)
+    return () => window.removeEventListener('resize', setHeight)
+  }, [])
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#FFFEFE]">
+    <header
+      ref={headerRef}
+      className="fixed top-0 left-0 w-full z-50 bg-[#FFFEFE]"
+    >
       <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
         {/* โลโก้ + ชื่อ */}
         <div
