@@ -2,6 +2,7 @@ import './globals.css'
 import { Prompt, Inter } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
 import StructuredData from '@/components/StructuredData'
+import type { Metadata } from 'next'
 
 const fontTH = Prompt({
   subsets: ['thai'],
@@ -15,7 +16,7 @@ const fontEN = Inter({
   weight: ['400', '700']
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'สำนักงานบัญชี VIRINTIRA | สำนักงานบัญชีและบริหารธุรกิจครบวงจร',
   description: 'ให้บริการบัญชี ภาษี จดทะเบียนธุรกิจ และการตลาดออนไลน์',
   keywords: [
@@ -65,7 +66,11 @@ export const metadata = {
     'ขอใบอนุญาต',
     'business license application',
   ],
-  icons: '/favicon.ico',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
+  manifest: '/manifest.json',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
