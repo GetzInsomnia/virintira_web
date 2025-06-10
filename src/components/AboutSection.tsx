@@ -9,7 +9,7 @@ export default function AboutSection() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <section className="relative min-h-[calc(100vh-0px)] snap-start bg-[#FFFEFE] px-4 py-16 lg:py-0 flex items-center justify-center">
+    <section className="relative min-h-[calc(100vh-var(--header-height))] snap-start bg-[#FFFEFE] px-4 py-16 lg:py-0 flex items-center justify-center">
       <div className="max-w-7xl w-full mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 mt-6 lg:mt-12">
         {/* Left (Text Content) */}
         <motion.div
