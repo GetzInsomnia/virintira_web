@@ -16,8 +16,23 @@ const fontEN = Inter({
 })
 
 export const metadata = {
-  title: 'สำนักงานบัญชี VIRINTIRA',
-  description: 'เว็บไซต์ให้บริการบัญชี ภาษี และจดทะเบียนธุรกิจ',
+  title: 'สำนักงานบัญชี VIRINTIRA | สำนักงานบัญชีและบริหารธุรกิจครบวงจร',
+  description: 'ให้บริการบัญชี ภาษี จดทะเบียนธุรกิจ และการตลาดออนไลน์',
+  keywords: [
+    'สำนักงานบัญชี',
+    'บริการบัญชี',
+    'บริการภาษี',
+    'จดทะเบียนบริษัท',
+    'การตลาดออนไลน์',
+
+    'Virintira',
+    'Virintira Accounting',
+    'accounting services',
+    'tax services',
+    'bookkeeping',
+    'company registration',
+    'online marketing',
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
