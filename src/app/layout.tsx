@@ -1,6 +1,7 @@
 import './globals.css'
 import { Prompt, Inter } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
+import StructuredData from '@/components/StructuredData'
 
 const fontTH = Prompt({
   subsets: ['thai'],
@@ -22,6 +23,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="th">
+      <head>
+        <StructuredData />
+      </head>
       <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-y-scroll scroll-smooth`}>
         <Navbar />
         <main className="pt-[72px] h-[calc(100vh-0px)] overflow-y-auto snap-y snap-mandatory scroll-smooth">
