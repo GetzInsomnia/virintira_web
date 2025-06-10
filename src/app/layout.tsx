@@ -1,6 +1,7 @@
 import './globals.css'
 import { Prompt, Inter } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
+import StructuredData from '@/components/StructuredData'
 
 const fontTH = Prompt({
   subsets: ['thai'],
@@ -15,13 +16,64 @@ const fontEN = Inter({
 })
 
 export const metadata = {
-  title: 'สำนักงานบัญชี VIRINTIRA',
-  description: 'เว็บไซต์ให้บริการบัญชี ภาษี และจดทะเบียนธุรกิจ',
+  title: 'สำนักงานบัญชี VIRINTIRA | สำนักงานบัญชีและบริหารธุรกิจครบวงจร',
+  description: 'ให้บริการบัญชี ภาษี จดทะเบียนธุรกิจ และการตลาดออนไลน์',
+  keywords: [
+    'สำนักงานบัญชี',
+    'บริการบัญชี',
+    'บริการภาษี',
+    'จดทะเบียนบริษัท',
+    'การตลาดออนไลน์',
+
+    'Virintira',
+    'Virintira Accounting',
+    'accounting services',
+    'tax services',
+    'bookkeeping',
+    'company registration',
+    'online marketing',
+    // Business registration services
+    'จด หจก.',
+    'limited partnership registration',
+    'จด บจก.',
+    'private limited company registration',
+    'จดห้างหุ้นส่วน',
+    'partnership registration',
+    'จดสมาคม',
+    'association registration',
+    'จดมูลนิธิ',
+    'foundation registration',
+    'แก้ไขข้อมูลบริษัท',
+    'company information update',
+    'ทำบัญชี',
+    'ภาษี',
+    'เคลียร์ภาษี',
+    'วางแผนภาษี',
+    'tax',
+    'tax clearance',
+    'tax planning',
+    'ปิดงบ',
+    'financial statement closing',
+    'ทำเว็บ',
+    'website development',
+    'การตลาด',
+    'marketing',
+    'โปรดักชั่น',
+    'production',
+    'ที่ปรึกษา',
+    'consultant',
+    'ขอใบอนุญาต',
+    'business license application',
+  ],
+  icons: '/favicon.ico',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="th">
+      <head>
+        <StructuredData />
+      </head>
       <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-y-scroll scroll-smooth`}>
         <Navbar />
         <main className="pt-[72px] h-[calc(100vh-0px)] overflow-y-auto snap-y snap-mandatory scroll-smooth">

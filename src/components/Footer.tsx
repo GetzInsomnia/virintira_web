@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import {
   FaPhoneAlt,
   FaLine,
@@ -11,8 +12,18 @@ import {
 } from 'react-icons/fa'
 
 export default function Footer() {
+  const pathname = usePathname()
   const handleLogoClick = () => {
-    window.location.href = '/?scrollToHero=true'
+    if (pathname === '/') {
+      const target = document.getElementById('herosection')
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    } else {
+      window.location.href = '/?scrollToHero=true'
+    }
   }
 
   return (
