@@ -1,0 +1,4 @@
+*.txt  text
+*.xml  text
+*.tsx  text
+* text=auto
