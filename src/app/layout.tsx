@@ -80,9 +80,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <StructuredData />
       </head>
-      <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-y-scroll scroll-smooth`}>
+      <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-y-hidden`}>
         <Navbar />
-        <main className="pt-[72px] h-[calc(100vh-0px)] overflow-y-auto snap-y snap-mandatory scroll-smooth">
+        <main className="pt-[72px] h-[calc(100vh-0px)] overflow-y-auto snap-y snap-mandatory scroll-smooth scroll-pt-[72px]">
           {children}
           <Footer />
         </main>
