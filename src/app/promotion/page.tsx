@@ -28,7 +28,6 @@ export default function PromotionPage() {
         ]}
       />
 
-<Footer />
     </main>
   )
 }

@@ -38,7 +38,6 @@ export default function HomePage() {
       <AboutSection />
       <WhyChooseUsSection />
       <HowItWorksSection />
-      <Footer />
     </>
   )
 }

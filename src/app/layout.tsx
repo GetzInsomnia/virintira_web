@@ -3,6 +3,7 @@ import { Prompt, Inter } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
 import StructuredData from '@/components/StructuredData'
 import type { Metadata } from 'next'
+import Footer from '@/components/Footer'
 
 const fontTH = Prompt({
   subsets: ['thai'],
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="pt-[72px] h-[calc(100vh-0px)] overflow-y-auto snap-y snap-mandatory scroll-smooth">
           {children}
+          <Footer />
         </main>
       </body>
     </html>
