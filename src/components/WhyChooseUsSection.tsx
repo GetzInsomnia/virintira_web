@@ -32,7 +32,7 @@ const features = [
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="relative min-h-[calc(100vh-0px)] snap-start overflow-hidden px-4 py-40 md:py-58 lg:py-50">
+    <section className="relative min-h-[calc(100vh-var(--header-height))] snap-start overflow-hidden px-4 py-40 md:py-58 lg:py-50">
       <motion.div
         className="absolute inset-0 z-0"
         initial={{ backgroundPosition: '100% 100%' }}
