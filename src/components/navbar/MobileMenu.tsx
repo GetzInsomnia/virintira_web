@@ -127,10 +127,8 @@ export default function MobileMenu({
   }, [isOpen])
 
   useEffect(() => {
-    if (isOpen) {
-      onClose()
-    }
-  }, [pathname, isOpen, onClose])
+    onClose()
+  }, [pathname, onClose])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
