@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 import MegaMenu from './MegaMenu'
 import LanguageSwitcher from './LanguageSwitcher'
@@ -17,6 +17,10 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const hideTimer = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
+
+  const handleCloseMenu = useCallback(() => {
+    setMobileMenuOpen(false)
+  }, [])
 
   const handleMouseEnter = () => {
     if (hideTimer.current) clearTimeout(hideTimer.current)
@@ -152,7 +156,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      <MobileMenu isOpen={mobileMenuOpen} onClose={handleCloseMenu} />
       <SocialFloating menuOpen={mobileMenuOpen} />
     </header>
   )

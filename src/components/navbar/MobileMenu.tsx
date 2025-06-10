@@ -128,7 +128,7 @@ export default function MobileMenu({
 
   useEffect(() => {
     onClose()
-  }, [pathname])
+  }, [pathname, onClose])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -144,7 +144,7 @@ export default function MobileMenu({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [isOpen])
+  }, [isOpen, onClose])
 
   return (
     <div
