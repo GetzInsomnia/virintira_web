@@ -7,7 +7,6 @@ import PopularServices from '@/components/PopularServices'
 import AboutSection from '@/components/AboutSection'
 import WhyChooseUsSection from '@/components/WhyChooseUsSection'
 import HowItWorksSection from '@/components/HowItWorksSection'
-import Footer from '@/components/Footer'
 
 export default function HomePage() {
   const searchParams = useSearchParams()

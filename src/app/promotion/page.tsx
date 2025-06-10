@@ -1,7 +1,6 @@
 'use client'
 
 import PromotionSection from '@/components/PromotionSection'
-import Footer from '@/components/Footer'
 
 export default function PromotionPage() {
   return (
