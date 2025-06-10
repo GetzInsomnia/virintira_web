@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import ContactCTA from '@/components/ContactCTA'
 import BorderRevealButton from '@/components/BorderRevealButton'
@@ -19,7 +20,7 @@ function useIsMobile() {
   return isMobile
 }
 
-export default function UnderConstructionPage() {
+function UnderConstructionContent() {
   const searchParams = useSearchParams()
   const section = searchParams.get('section') || 'หมวดหมู่ไม่ระบุ'
   const item = searchParams.get('item') || 'หัวข้อไม่ระบุ'
@@ -58,5 +59,13 @@ export default function UnderConstructionPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function UnderConstructionPage() {
+  return (
+    <Suspense fallback={null}>
+      <UnderConstructionContent />
+    </Suspense>
   )
 }
