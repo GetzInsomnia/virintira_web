@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import HeroSection from '@/components/HeroSection'
@@ -8,7 +9,7 @@ import AboutSection from '@/components/AboutSection'
 import WhyChooseUsSection from '@/components/WhyChooseUsSection'
 import HowItWorksSection from '@/components/HowItWorksSection'
 
-export default function HomePage() {
+function HomePageContent() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -38,5 +39,13 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <HowItWorksSection />
     </>
+  )
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={null}>
+      <HomePageContent />
+    </Suspense>
   )
 }
