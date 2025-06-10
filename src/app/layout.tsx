@@ -33,6 +33,7 @@ export const metadata = {
     'company registration',
     'online marketing',
   ],
+  icons: '/favicon.ico',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
