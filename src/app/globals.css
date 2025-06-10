@@ -3,7 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --header-height: 0px;
+  /* Approximate navbar height to prevent initial layout shift */
+  --header-height: 72px;
 }
 
 @theme inline {
