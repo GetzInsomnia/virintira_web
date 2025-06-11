@@ -24,6 +24,7 @@ export default function Navbar() {
   const hideTimer = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
   const headerRef = useRef<HTMLElement | null>(null)
+  const DEFAULT_HEADER_HEIGHT = 72
 
   const handleCloseMenu = useCallback(() => {
     setMobileMenuOpen(false)
@@ -67,11 +68,17 @@ export default function Navbar() {
 
   useLayoutEffect(() => {
     const setHeight = () => {
-      if (headerRef.current) {
-        document.documentElement.style.setProperty(
-          '--header-height',
-          `${headerRef.current.offsetHeight}px`
-        )
+      const header = headerRef.current
+      if (!header) return
+      const height = header.offsetHeight
+      const root = document.documentElement
+      const current = parseFloat(
+        getComputedStyle(root).getPropertyValue('--header-height')
+      )
+      if (height !== DEFAULT_HEADER_HEIGHT || current !== DEFAULT_HEADER_HEIGHT) {
+        if (height !== current) {
+          root.style.setProperty('--header-height', `${height}px`)
+        }
       }
     }
 
