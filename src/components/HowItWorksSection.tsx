@@ -59,7 +59,7 @@ export default function HowItWorksSection() {
   }, [hasStartedHighlight])
 
   return (
-    <section className="relative min-h-[calc(100vh-var(--header-height))] snap-start bg-[#fff4f4] flex flex-col justify-center px-4 py-30 md:py-50 lg:py-42">
+    <section className="relative min-h-[calc(100dvh-var(--header-height))] snap-start bg-[#fff4f4] flex flex-col justify-center px-4 py-30 md:py-50 lg:py-42">
       <div className="max-w-6xl mx-auto w-full flex flex-col justify-center">
         <h2 className="text-center text-2xl lg:text-4xl font-bold text-[#A70909] mb-16">ขั้นตอนการใช้บริการ</h2>
 

@@ -29,7 +29,7 @@ function UnderConstructionContent() {
   const isMobile = useIsMobile()
 
   return (
-    <div className="relative min-h-[100vh] flex items-center justify-center text-center px-6 bg-white snap-start transition-all">
+    <div className="relative min-h-[100dvh] flex items-center justify-center text-center px-6 bg-white snap-start transition-all">
       <div className="max-w-xl flex flex-col items-center">
         {/* ไอคอน 🚧 */}
         <div className="text-[80px] sm:text-[100px] leading-none mb-6">🚧</div>
