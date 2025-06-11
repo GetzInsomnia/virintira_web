@@ -82,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-y-hidden`}>
         <Navbar />
-        <main className="pt-[var(--header-height)] h-[calc(100vh-var(--header-height))] overflow-y-auto snap-y snap-mandatory scroll-smooth scroll-pt-[var(--header-height)]">
+        <main className="pt-[var(--header-height)] h-[calc(100vh-var(--header-height))] overflow-y-auto scroll-smooth scroll-pt-[var(--header-height)]">
           {children}
           <Footer />
         </main>
