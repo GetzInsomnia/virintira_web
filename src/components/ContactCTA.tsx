@@ -10,6 +10,7 @@ type ContactCTAProps = {
 
 export default function ContactCTA({ onExpandChange }: ContactCTAProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -22,6 +23,13 @@ export default function ContactCTA({ onExpandChange }: ContactCTAProps) {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   // ✅ แจ้งผลหลัง state เปลี่ยน
   useEffect(() => {
     onExpandChange?.(isOpen)
@@ -31,67 +39,55 @@ export default function ContactCTA({ onExpandChange }: ContactCTAProps) {
     <div className="relative h-12 w-full flex justify-center items-center" ref={containerRef}>
       <AnimatePresence initial={false}>
         {isOpen ? (
-          <>
-            {/* 🖥️ Tablet & Desktop */}
-            <motion.div
-              key="cta-options-desktop"
-              className="absolute inset-0 hidden sm:flex gap-4 justify-center items-center"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-            >
-              <a
-                href="tel:0928825556"
-                className="flex items-center gap-2 px-4 h-10 border-2 border-[#A70909] rounded-full text-[#A70909] font-medium text-sm hover:bg-[#A70909] hover:text-white transition w-[190px] justify-center"
-              >
-                <FaPhoneAlt className="text-base" /> โทร 092-882-5556
-              </a>
-
-              <a
-                href="https://lin.ee/TBe5njP"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center h-10 px-4 rounded-full bg-[#06C755] text-white text-sm font-medium transition hover:brightness-110 w-[190px]"
-              >
-                <FaLine className="text-2xl mr-2" /> แชทเลย!
-              </a>
-            </motion.div>
-
-            {/* 📱 Mobile */}
+          isMobile ? (
             <motion.div
               key="cta-options-mobile"
-              className="absolute sm:hidden top-0 flex flex-col items-center gap-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-            >
-              <motion.a
-                href="tel:0928825556"
-                className="flex items-center justify-center gap-2 px-4 h-10 border-2 border-[#A70909] rounded-full text-[#A70909] font-medium text-sm hover:bg-[#A70909] hover:text-white transition w-[190px]"
+                className="absolute top-0 flex flex-col items-center gap-3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
               >
-                <FaPhoneAlt className="text-base" /> โทร 092-882-5556
-              </motion.a>
-
-              <motion.a
-                href="https://lin.ee/TBe5njP"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center h-10 px-4 rounded-full bg-[#06C755] text-white text-sm font-medium transition hover:brightness-110 w-[190px]"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, ease: 'easeOut', delay: 0.2 }}
+                <a
+                  href="tel:0928825556"
+                  className="flex items-center justify-center gap-2 px-4 h-10 border-2 border-[#A70909] rounded-full text-[#A70909] font-medium text-sm hover:bg-[#A70909] hover:text-white transition-all duration-200 w-[190px]"
+                >
+                  <FaPhoneAlt className="text-base" /> โทร 092-882-5556
+                </a>
+                <a
+                  href="https://lin.ee/TBe5njP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center h-10 px-4 rounded-full bg-[#06C755] text-white text-sm font-medium transition-all duration-200 hover:brightness-110 w-[190px]"
+                >
+                  <FaLine className="text-2xl mr-2" /> แชทเลย!
+                </a>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="cta-options-desktop"
+                className="absolute inset-0 flex gap-4 justify-center items-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
               >
-                <FaLine className="text-2xl mr-2" /> แชทเลย!
-              </motion.a>
-            </motion.div>
-          </>
+                <a
+                  href="tel:0928825556"
+                  className="flex items-center gap-2 px-4 h-10 border-2 border-[#A70909] rounded-full text-[#A70909] font-medium text-sm hover:bg-[#A70909] hover:text-white transition w-[190px] justify-center"
+                >
+                  <FaPhoneAlt className="text-base" /> โทร 092-882-5556
+                </a>
+                <a
+                  href="https://lin.ee/TBe5njP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center h-10 px-4 rounded-full bg-[#06C755] text-white text-sm font-medium transition hover:brightness-110 w-[190px]"
+                >
+                  <FaLine className="text-2xl mr-2" /> แชทเลย!
+                </a>
+              </motion.div>
+            )
         ) : (
           <motion.button
             key="cta-main"
