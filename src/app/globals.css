@@ -3,7 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --header-height: 0px;
+  /* Default header height to avoid layout shift before JS loads */
+  --header-height: 72px;
 }
 
 @theme inline {
