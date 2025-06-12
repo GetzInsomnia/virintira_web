@@ -46,19 +46,19 @@ export default function PopularServices() {
       <div className="w-full max-w-7xl mx-auto">
         <h2 className="text-2xl lg:text-4xl font-bold text-center text-[#A70909] mb-10">บริการยอดนิยม</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[360px] sm:auto-rows-[300px] lg:auto-rows-[250px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[340px] sm:auto-rows-[280px] lg:auto-rows-[230px]">
           {services.map((service, index) => {
             const isBlurred = hoverIndex !== null && hoverIndex !== index
             const href = `/under-construction?section=บริการยอดนิยม&item=${encodeURIComponent(service.title)}`
 
             return (
-              <Link href={href} key={index} className="block">
+              <Link href={href} key={index} className="contents">
                 <motion.div
                   onMouseEnter={() => setHoverIndex(index)}
                   onMouseLeave={() => setHoverIndex(null)}
                   className={`relative rounded-xl overflow-hidden bg-white shadow-md group transition-none h-full
                     ${index === 0
-                      ? 'sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2'
+                      ? 'sm:col-span-2 sm:row-span-1 lg:col-span-2 lg:row-span-2'
                       : 'sm:col-span-1 sm:row-span-1 lg:col-span-1 lg:row-span-1'}
                     ${isBlurred ? 'blur-[2px]' : ''}
                   `}
