@@ -9,31 +9,31 @@ const services = [
     title: 'จดทะเบียนบริษัท',
     slug: 'registration',
     description: 'บริการจดทะเบียนบริษัท และหจก. แบบครบวงจร พร้อมให้คำปรึกษาโดยทีมงานมืออาชีพ',
-    image: '/services/registration.png',
+    image: '/services/registration.webp',
   },
   {
     title: 'แก้ไขข้อมูลนิติบุคคล',
     slug: 'edit-info',
     description: 'เปลี่ยนแปลงข้อมูลต่างๆ ของบริษัท',
-    image: '/services/edit-info.png',
+    image: '/services/edit-info.webp',
   },
   {
     title: 'ทำบัญชีรายเดือน',
     slug: 'accounting',
     description: 'ทำบัญชีและยื่นภาษีอย่างถูกต้อง',
-    image: '/services/accounting.png',
+    image: '/services/accounting.webp',
   },
   {
     title: 'ปิดงบการเงิน',
     slug: 'close-financial',
     description: 'บริการปิดงบโดยผู้สอบบัญชีรับอนุญาต',
-    image: '/services/close-financial.png',
+    image: '/services/close-financial.webp',
   },
   {
     title: 'วางแผนภาษี',
     slug: 'tax',
     description: 'วางแผนภาษีให้ธุรกิจอย่างคุ้มค่า',
-    image: '/services/tax.png',
+    image: '/services/tax.webp',
   },
 ]
 
