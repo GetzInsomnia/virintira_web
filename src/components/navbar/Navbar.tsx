@@ -133,7 +133,7 @@ export default function Navbar() {
 
             {isHoveringMenu && (
               <div
-                className="fixed top-[calc(var(--header-height)-5px)] left-0 w-full z-40 bg-white border-t border-gray-200 shadow-md"
+                className="fixed top-[calc(var(--header-height)-10px)] left-0 w-full z-40 bg-white border-t border-gray-200 shadow-md"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
