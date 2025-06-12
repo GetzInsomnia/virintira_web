@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const services = [
   {
@@ -66,10 +67,14 @@ export default function PopularServices() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 transition duration-300"
-                    style={{ backgroundImage: `url(${service.image})` }}
-                  ></div>
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes={index === 0 ? '(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw' : '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'}
+                    priority={index < 2}
+                    className="absolute inset-0 object-cover object-center opacity-80 group-hover:opacity-100 transition duration-300"
+                  />
 
                   <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 px-4 py-3 z-10">
                     <h3 className="text-lg font-semibold text-[#A70909] mb-1 group-hover:translate-y-[-2px] transition duration-300">
