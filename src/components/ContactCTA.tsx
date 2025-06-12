@@ -31,7 +31,7 @@ export default function ContactCTA({ onExpandChange }: ContactCTAProps) {
   return (
     <div className="relative h-12 w-full flex justify-center items-center" ref={containerRef}>
       <div
-        className={`absolute top-0 sm:inset-0 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 transition-all duration-300 ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+        className={`absolute top-0 sm:inset-0 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 transition-all duration-300 ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
         <a
           href="tel:0928825556"
