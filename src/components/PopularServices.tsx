@@ -52,7 +52,7 @@ export default function PopularServices() {
             const href = `/under-construction?section=บริการยอดนิยม&item=${encodeURIComponent(service.title)}`
 
             return (
-              <Link href={href} key={index} className="contents">
+              <Link href={href} key={index} className="block">
                 <motion.div
                   onMouseEnter={() => setHoverIndex(index)}
                   onMouseLeave={() => setHoverIndex(null)}
