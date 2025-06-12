@@ -56,7 +56,7 @@ export default function PopularServices() {
                 <motion.div
                   onMouseEnter={() => setHoverIndex(index)}
                   onMouseLeave={() => setHoverIndex(null)}
-                  className={`relative rounded-xl overflow-hidden bg-white shadow-md group duration-300
+                  className={`relative rounded-xl overflow-hidden bg-white shadow-md group duration-300 h-full
                     ${index === 0
                       ? 'sm:col-span-2 sm:row-span-1 lg:col-span-2 lg:row-span-2'
                       : 'sm:col-span-1 sm:row-span-1 lg:col-span-1 lg:row-span-1'}
