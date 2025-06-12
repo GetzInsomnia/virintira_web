@@ -73,7 +73,7 @@ export default function PopularServices() {
                     fill
                     sizes={index === 0 ? '(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw' : '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'}
                     priority={index < 2}
-                    className="absolute inset-0 object-cover object-center opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 object-cover object-center opacity-80 group-hover:opacity-100"
                   />
 
                   <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 px-4 py-3 z-10">
