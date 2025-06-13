@@ -42,7 +42,10 @@ export default function PopularServices() {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
 
   return (
-    <section className="relative min-h-[calc(100dvh-var(--header-height))] snap-start px-4 pt-[80px] sm:pt-[80px] lg:pt-25 pb-10 flex items-center justify-center bg-[#FFFEFE]">
+    <section
+      className="relative min-h-[calc(100dvh-var(--header-height))] snap-start px-4 pt-[80px] sm:pt-[80px] lg:pt-25 pb-10 flex items-center justify-center bg-[#FFFEFE]"
+      style={{ minHeight: 'calc(100dvh - var(--header-height))' }}
+    >
       <div className="w-full max-w-7xl mx-auto">
         <h2 className="text-2xl lg:text-4xl font-bold text-center text-[#A70909] mb-10">บริการยอดนิยม</h2>
 
