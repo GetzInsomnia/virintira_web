@@ -1,5 +1,3 @@
-'use client'
-
 import PromotionSection from '@/components/PromotionSection'
 
 export default function PromotionPage() {
