@@ -82,7 +82,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <StructuredData />
         <script
           dangerouslySetInnerHTML={{
-            __html: `if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }`,
+            __html: `
+          if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual'
+          }
+          window.addEventListener('DOMContentLoaded', () => {
+            const main = document.getElementById('main')
+            if (main) main.scrollTo(0, 0)
+            else window.scrollTo(0, 0)
+          })
+        `,
           }}
         />
       </head>
