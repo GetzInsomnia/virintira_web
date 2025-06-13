@@ -79,6 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="th">
       <head>
+        <style>{`:root{--header-height:72px;}`}</style>
         <StructuredData />
         <Script id="scroll-restoration" strategy="beforeInteractive">
           {`
