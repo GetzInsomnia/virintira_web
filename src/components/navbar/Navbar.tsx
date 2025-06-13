@@ -8,7 +8,7 @@ import {
   useCallback,
   useLayoutEffect,
 } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import MegaMenu from './MegaMenu'
 import LanguageSwitcher from './LanguageSwitcher'
 import HamburgerButton from './HamburgerButton'
@@ -23,7 +23,6 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const hideTimer = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
-  const router = useRouter()
   const headerRef = useRef<HTMLElement | null>(null)
   const DEFAULT_HEADER_HEIGHT = 72
 
@@ -56,9 +55,15 @@ export default function Navbar() {
 
   const handleLogoClick = () => {
     if (pathname === '/') {
-      window.location.hash = 'herosection'
+      window.location.hash = 'herosection' // update hash for direct links
+      const target = document.getElementById('herosection')
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
     } else {
-      router.push('/#herosection')
+      window.location.href = '/#herosection'
     }
   }
 
