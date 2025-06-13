@@ -1,6 +1,15 @@
 'use client'
 
 import PromotionSection from '@/components/PromotionSection'
+import type { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    alternates: {
+      canonical: 'https://virintira.com/promotion',
+    },
+  }
+}
 
 export default function PromotionPage() {
   return (

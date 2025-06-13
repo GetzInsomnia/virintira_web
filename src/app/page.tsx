@@ -7,6 +7,15 @@ import PopularServices from '@/components/PopularServices'
 import AboutSection from '@/components/AboutSection'
 import WhyChooseUsSection from '@/components/WhyChooseUsSection'
 import HowItWorksSection from '@/components/HowItWorksSection'
+import type { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    alternates: {
+      canonical: 'https://virintira.com/',
+    },
+  }
+}
 
 function HomePageContent() {
   return (

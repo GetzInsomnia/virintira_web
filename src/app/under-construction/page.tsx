@@ -4,6 +4,15 @@ import { useEffect, useState } from 'react'
 import ContactCTA from '@/components/ContactCTA'
 import BorderRevealButton from '@/components/BorderRevealButton'
 import { motion } from 'framer-motion'
+import type { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    alternates: {
+      canonical: 'https://virintira.com/under-construction',
+    },
+  }
+}
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)

@@ -73,6 +73,9 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   manifest: '/manifest.json',
+  alternates: {
+    canonical: 'https://virintira.com/',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
