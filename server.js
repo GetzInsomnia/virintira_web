@@ -17,20 +17,11 @@ app.prepare().then(() => {
         ? protoHeader[0]
         : (protoHeader || '').split(',')[0].trim();
       const hostHeader = req.headers.host || '';
-      const host = hostHeader.split(':')[0];
 
       // Only redirect when the request actually used HTTP. An undefined header
       // may mean the proxy already handled HTTPS.
       if (proto === 'http') {
         res.writeHead(301, { Location: `https://${hostHeader}${req.url}` });
-        res.end();
-        return;
-      }
-
-      if (host.toLowerCase() === 'www.virintira.com') {
-        res.writeHead(301, {
-          Location: `https://virintira.com${req.url}`,
-        });
         res.end();
         return;
       }
