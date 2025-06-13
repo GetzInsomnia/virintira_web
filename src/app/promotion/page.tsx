@@ -1,4 +1,9 @@
 import PromotionSection from '@/components/PromotionSection'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://virintira.com/promotion' },
+}
 
 export default function PromotionPage() {
   return (
