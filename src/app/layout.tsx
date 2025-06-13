@@ -21,7 +21,6 @@ const fontEN = Inter({
 export const metadata: Metadata = {
   title: 'สำนักงานบัญชี VIRINTIRA | สำนักงานบัญชีและบริหารธุรกิจครบวงจร',
   description: 'ให้บริการบัญชี ภาษี จดทะเบียนธุรกิจ และการตลาดออนไลน์',
-  alternates: { canonical: 'https://virintira.com' },
   keywords: [
     'สำนักงานบัญชี',
     'บริการบัญชี',
