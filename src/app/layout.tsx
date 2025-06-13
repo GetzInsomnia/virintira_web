@@ -86,8 +86,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               history.scrollRestoration = 'manual'
             }
             const main = document.getElementById('main')
-            if (main) main.scrollTo(0, 0)
-            else window.scrollTo(0, 0)
+            if (main) {
+              main.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+            } else {
+              window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+            }
           `}
         </Script>
       </head>
