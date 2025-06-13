@@ -6,29 +6,45 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-app.prepare().then(() => {
-  createServer((req, res) => {
-    if (!dev) {
-      // Normalize the forwarded protocol header. Some proxies send values like
-      // "https,http". Only the first value is relevant for determining the
-      // original request scheme.
-      const protoHeader = req.headers['x-forwarded-proto'];
-      const proto = Array.isArray(protoHeader)
-        ? protoHeader[0]
-        : (protoHeader || '').split(',')[0].trim();
-      const hostHeader = req.headers.host || '';
+function getForwardedProto(headers) {
+  const xfProto = headers['x-forwarded-proto'];
+  if (xfProto) {
+    const value = Array.isArray(xfProto) ? xfProto[0] : xfProto;
+    return value.split(',')[0].trim().toLowerCase();
+  }
 
-      // Only redirect when the request actually used HTTP. An undefined header
-      // may mean the proxy already handled HTTPS.
-      if (proto === 'http') {
+  const forwarded = headers['forwarded'];
+  if (forwarded) {
+    const value = Array.isArray(forwarded) ? forwarded[0] : forwarded;
+    const match = value.match(/proto=([^;]+)/i);
+    if (match) {
+      return match[1].split(',')[0].trim().toLowerCase();
+    }
+  }
+
+  return undefined;
+}
+
+function shouldRedirectToHttps(req) {
+  const proto = getForwardedProto(req.headers);
+  return proto && !proto.includes('https');
+}
+
+if (require.main === module) {
+  app.prepare().then(() => {
+    createServer((req, res) => {
+      if (!dev && shouldRedirectToHttps(req)) {
+        const hostHeader = req.headers.host || '';
         res.writeHead(301, { Location: `https://${hostHeader}${req.url}` });
         res.end();
         return;
       }
-    }
 
-    handle(req, res);
-  }).listen(port, () => {
-    console.log(`> Ready on http://localhost:${port}`);
+      handle(req, res);
+    }).listen(port, () => {
+      console.log(`> Ready on http://localhost:${port}`);
+    });
   });
-});
+}
+
+module.exports = { getForwardedProto, shouldRedirectToHttps };
