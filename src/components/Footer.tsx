@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import {
   FaPhoneAlt,
   FaLine,
@@ -13,16 +13,12 @@ import {
 
 export default function Footer() {
   const pathname = usePathname()
+  const router = useRouter()
   const handleLogoClick = () => {
     if (pathname === '/') {
-      const target = document.getElementById('herosection')
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' })
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
+      window.location.hash = 'herosection'
     } else {
-      window.location.href = '/?scrollToHero=true'
+      router.push('/#herosection')
     }
   }
 
