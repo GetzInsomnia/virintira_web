@@ -4,6 +4,24 @@ import Navbar from '@/components/navbar/Navbar'
 import StructuredData from '@/components/StructuredData'
 import type { Metadata } from 'next'
 import Footer from '@/components/Footer'
+import { useRef, useLayoutEffect } from 'react'
+
+function ScrollRestoration({
+  mainRef,
+}: {
+  mainRef: React.RefObject<HTMLElement | null>
+}) {
+  'use client'
+
+  useLayoutEffect(() => {
+    history.scrollRestoration = 'manual'
+    if (mainRef.current) {
+      mainRef.current.scrollTop = 0
+    }
+  }, [mainRef])
+
+  return null
+}
 
 const fontTH = Prompt({
   subsets: ['thai'],
@@ -75,6 +93,8 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const mainRef = useRef<HTMLElement | null>(null)
+
   return (
     <html lang="th">
       <head>
@@ -82,7 +102,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-x-hidden overflow-y-hidden`}>
         <Navbar />
-        <main className="pt-[var(--header-height)] h-[calc(100dvh-var(--header-height))] box-content overflow-y-auto overflow-x-hidden scroll-smooth scroll-pt-[var(--header-height)]">
+        <main
+          ref={mainRef}
+          className="pt-[var(--header-height)] h-[calc(100dvh-var(--header-height))] box-content overflow-y-auto overflow-x-hidden scroll-smooth scroll-pt-[var(--header-height)]"
+        >
+          <ScrollRestoration mainRef={mainRef} />
           {children}
           <Footer />
         </main>
