@@ -1,10 +1,8 @@
 'use client'
 
-import { Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import ContactCTA from '@/components/ContactCTA'
 import BorderRevealButton from '@/components/BorderRevealButton'
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 function useIsMobile() {
@@ -21,9 +19,14 @@ function useIsMobile() {
 }
 
 function UnderConstructionContent() {
-  const searchParams = useSearchParams()
-  const section = searchParams.get('section') || 'หมวดหมู่ไม่ระบุ'
-  const item = searchParams.get('item') || 'หัวข้อไม่ระบุ'
+  const [section, setSection] = useState('หมวดหมู่ไม่ระบุ')
+  const [item, setItem] = useState('หัวข้อไม่ระบุ')
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setSection(params.get('section') || 'หมวดหมู่ไม่ระบุ')
+    setItem(params.get('item') || 'หัวข้อไม่ระบุ')
+  }, [])
 
   const [ctaExpanded, setCtaExpanded] = useState(false)
   const isMobile = useIsMobile()
@@ -63,9 +66,5 @@ function UnderConstructionContent() {
 }
 
 export default function UnderConstructionPage() {
-  return (
-    <Suspense fallback={null}>
-      <UnderConstructionContent />
-    </Suspense>
-  )
+  return <UnderConstructionContent />
 }
