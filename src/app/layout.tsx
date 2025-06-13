@@ -4,6 +4,7 @@ import Navbar from '@/components/navbar/Navbar'
 import StructuredData from '@/components/StructuredData'
 import type { Metadata } from 'next'
 import Footer from '@/components/Footer'
+import ScrollRestoration from '@/components/ScrollRestoration'
 
 const fontTH = Prompt({
   subsets: ['thai'],
@@ -82,7 +83,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-x-hidden overflow-y-hidden`}>
         <Navbar />
-        <main className="pt-[var(--header-height)] h-[calc(100dvh-var(--header-height))] box-content overflow-y-auto overflow-x-hidden scroll-smooth scroll-pt-[var(--header-height)]">
+        <ScrollRestoration />
+        <main
+          id="main"
+          className="pt-[var(--header-height)] h-[calc(100dvh-var(--header-height))] box-content overflow-y-auto overflow-x-hidden scroll-smooth scroll-pt-[var(--header-height)]"
+        >
           {children}
           <Footer />
         </main>
