@@ -1,6 +1,4 @@
 'use client'
-
-import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import ContactCTA from '@/components/ContactCTA'
 import BorderRevealButton from '@/components/BorderRevealButton'
@@ -63,9 +61,5 @@ function UnderConstructionContent() {
 }
 
 export default function UnderConstructionPage() {
-  return (
-    <Suspense fallback={null}>
-      <UnderConstructionContent />
-    </Suspense>
-  )
+  return <UnderConstructionContent />
 }
