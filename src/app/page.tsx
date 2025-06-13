@@ -1,5 +1,3 @@
-'use client'
-
 // Using React components on the homepage without Suspense
 import ScrollToHero from '@/components/ScrollToHero'
 import HeroSection from '@/components/HeroSection'
