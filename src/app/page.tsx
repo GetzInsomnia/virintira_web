@@ -1,6 +1,5 @@
-'use client'
 
-import { Suspense } from 'react'
+
 import ScrollToHero from '@/components/ScrollToHero'
 import HeroSection from '@/components/HeroSection'
 import PopularServices from '@/components/PopularServices'
@@ -22,9 +21,5 @@ function HomePageContent() {
 }
 
 export default function HomePage() {
-  return (
-    <Suspense fallback={null}>
-      <HomePageContent />
-    </Suspense>
-  )
+  return <HomePageContent />
 }
