@@ -1,5 +1,6 @@
 'use client'
 
+// Using React Suspense to handle asynchronous components on the homepage
 import { Suspense } from 'react'
 import ScrollToHero from '@/components/ScrollToHero'
 import HeroSection from '@/components/HeroSection'
