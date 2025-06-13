@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar/Navbar'
 import StructuredData from '@/components/StructuredData'
 import type { Metadata } from 'next'
 import Footer from '@/components/Footer'
-import ScrollRestoration from '@/components/ScrollRestoration'
+import Script from 'next/script'
 
 const fontTH = Prompt({
   subsets: ['thai'],
@@ -80,24 +80,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="th">
       <head>
         <StructuredData />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-          if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual'
-          }
-          window.addEventListener('DOMContentLoaded', () => {
+        <Script id="scroll-restoration" strategy="beforeInteractive">
+          {`
+            if ('scrollRestoration' in history) {
+              history.scrollRestoration = 'manual'
+            }
             const main = document.getElementById('main')
             if (main) main.scrollTo(0, 0)
             else window.scrollTo(0, 0)
-          })
-        `,
-          }}
-        />
+          `}
+        </Script>
       </head>
       <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-x-hidden overflow-y-hidden`}>
         <Navbar />
-        <ScrollRestoration />
         <main
           id="main"
           className="pt-[var(--header-height)] h-[calc(100dvh-var(--header-height))] box-content overflow-y-auto overflow-x-hidden scroll-smooth scroll-pt-[var(--header-height)]"
