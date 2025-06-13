@@ -80,6 +80,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="th">
       <head>
         <StructuredData />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }`,
+          }}
+        />
       </head>
       <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-x-hidden overflow-y-hidden`}>
         <Navbar />
