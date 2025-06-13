@@ -1,13 +1,11 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
 
 export default function ScrollToHero() {
-  const searchParams = useSearchParams()
-
   useEffect(() => {
-    const shouldScroll = searchParams.get('scrollToHero') === 'true'
+    const params = new URLSearchParams(window.location.search)
+    const shouldScroll = params.get('scrollToHero') === 'true'
     if (shouldScroll) {
       const timeout = setTimeout(() => {
         const target = document.getElementById('herosection')
@@ -22,7 +20,7 @@ export default function ScrollToHero() {
 
       return () => clearTimeout(timeout)
     }
-  }, [searchParams])
+  }, [])
 
   return null
 }

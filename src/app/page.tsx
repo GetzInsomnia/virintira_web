@@ -1,7 +1,6 @@
 'use client'
 
-// Using React Suspense to handle asynchronous components on the homepage
-import { Suspense } from 'react'
+// Using React components on the homepage without Suspense
 import ScrollToHero from '@/components/ScrollToHero'
 import HeroSection from '@/components/HeroSection'
 import PopularServices from '@/components/PopularServices'
@@ -23,9 +22,5 @@ function HomePageContent() {
 }
 
 export default function HomePage() {
-  return (
-    <Suspense fallback={null}>
-      <HomePageContent />
-    </Suspense>
-  )
+  return <HomePageContent />
 }
