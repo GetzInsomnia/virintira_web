@@ -9,15 +9,6 @@ const nextConfig: NextConfig = {
         destination: "https://virintira.com/:path*",
         permanent: true,
       },
-      {
-        source: "/:path*",
-        has: [
-          { type: "host", value: "virintira.com" },
-          { type: "header", key: "x-forwarded-proto", value: "http" },
-        ],
-        destination: "https://virintira.com/:path*",
-        permanent: true,
-      },
     ];
   },
 };
