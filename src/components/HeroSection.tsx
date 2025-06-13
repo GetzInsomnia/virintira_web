@@ -8,6 +8,7 @@ export default function HeroSection() {
   return (
     <section
       id="herosection"
+      style={{ minHeight: 'calc(100dvh - var(--header-height))' }}
       className="relative min-h-[calc(100dvh-var(--header-height))] lg:pt-25 flex items-center justify-center text-center px-6 bg-[#FFFEFE] snap-start"
     >
       {/* Background image */}

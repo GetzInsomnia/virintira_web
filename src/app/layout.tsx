@@ -99,6 +99,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main
           id="main"
+          style={{
+            paddingTop: 'var(--header-height)',
+            height: 'calc(100dvh - var(--header-height))',
+          }}
           className="pt-[var(--header-height)] h-[calc(100dvh-var(--header-height))] box-content overflow-y-auto overflow-x-hidden scroll-smooth scroll-pt-[var(--header-height)]"
         >
           {children}
