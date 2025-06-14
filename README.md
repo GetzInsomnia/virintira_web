@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Requirements
+
+Ensure you are running **Node.js >= 18.17**. You can use a version manager such as `nvm` to install the appropriate version.
+
 ## Getting Started
 
 First, run the development server:
@@ -38,6 +42,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## HTTPS Redirect
 
 This project includes optional logic in `server.js` to force HTTPS. The redirect
-is controlled by the `ENABLE_SSL_REDIRECT` environment variable. Set it to
-`true` to enable the redirect in production or leave it unset to disable the
-behaviour (useful when running behind a proxy that already handles HTTPS).
+is controlled by the `ENABLE_SSL_REDIRECT` environment variable and is
+**disabled by default**. Set `ENABLE_SSL_REDIRECT=true` to enable the redirect
+in production. Leaving it unset or set to any other value keeps the default
+behaviour, which is useful when running behind a proxy that already handles
+HTTPS.
