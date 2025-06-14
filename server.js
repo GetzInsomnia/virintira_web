@@ -3,6 +3,7 @@ const next = require('next');
 
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
+const enableSslRedirect = process.env.ENABLE_SSL_REDIRECT === 'true';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -33,7 +34,7 @@ function shouldRedirectToHttps(req) {
 if (require.main === module) {
   app.prepare().then(() => {
     createServer((req, res) => {
-      if (!dev && shouldRedirectToHttps(req)) {
+      if (!dev && enableSslRedirect && shouldRedirectToHttps(req)) {
         const hostHeader = req.headers.host || '';
         res.writeHead(301, { Location: `https://${hostHeader}${req.url}` });
         res.end();
