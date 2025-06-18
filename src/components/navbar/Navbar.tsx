@@ -17,12 +17,14 @@ import SearchToggle from './SearchToggle'
 import SocialFloating from './SocialFloating'
 import CustomLink from '@/components/CustomLink'
 import { FaFire } from 'react-icons/fa'
+import {useTranslations} from 'next-intl'
 
 export default function Navbar() {
   const [isHoveringMenu, setIsHoveringMenu] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const hideTimer = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
+  const t = useTranslations('Navbar')
   const headerRef = useRef<HTMLElement | null>(null)
   const DEFAULT_HEADER_HEIGHT = 72
 
@@ -109,13 +111,13 @@ export default function Navbar() {
           <CustomLink
             href="/promotion"
             section="Navbar"
-            item="โปรโมชั่น"
+            item={t('promotion')}
             className="flex items-center gap-1 font-medium text-black hover:text-[#A70909] transition relative
               after:content-[''] after:absolute after:bottom-[-24px] after:left-0 after:w-full after:h-[7px]
               after:bg-[#A70909] after:rounded-t-full after:scale-x-0 hover:after:scale-x-120 after:origin-middle after:transition-transform"
           >
             <FaFire className="text-[#A70909] animate-bounce" />
-            โปรโมชั่น
+            {t('promotion')}
           </CustomLink>
 
           {/* 🧾 บริการ (เมก้าเมนู) */}
@@ -129,7 +131,7 @@ export default function Navbar() {
               after:bg-[#A70909] after:rounded-t-full
               after:transition-transform after:origin-middle
               ${isHoveringMenu ? 'text-[#A70909] after:scale-x-120' : 'text-black after:scale-x-0'}`}>
-              บริการ
+              {t('services')}
             </span>
 
             {isHoveringMenu && (
@@ -149,26 +151,26 @@ export default function Navbar() {
           <CustomLink
             href="/under-construction"
             section="Navbar"
-            item="ดาวน์โหลดเอกสาร"
+            item={t('download')}
             className="relative text-black hover:text-[#A70909] transition
               after:content-[''] after:absolute after:bottom-[-24px] after:left-0 after:w-full after:h-[7px]
               after:bg-[#A70909] after:rounded-t-full
               after:scale-x-0 hover:after:scale-x-120 after:origin-middle after:transition-transform"
           >
-            ดาวน์โหลดเอกสาร
+            {t('download')}
           </CustomLink>
 
           {/* ☎️ ติดต่อเรา */}
           <CustomLink
             href="/under-construction"
             section="Navbar"
-            item="ติดต่อเรา"
+            item={t('contact')}
             className="relative text-black hover:text-[#A70909] transition
               after:content-[''] after:absolute after:bottom-[-24px] after:left-0 after:w-full after:h-[7px]
               after:bg-[#A70909] after:rounded-t-full
               after:scale-x-0 hover:after:scale-x-120 after:origin-middle after:transition-transform"
           >
-            ติดต่อเรา
+            {t('contact')}
           </CustomLink>
         </nav>
 
