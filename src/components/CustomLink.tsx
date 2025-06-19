@@ -1,7 +1,6 @@
 'use client'
 
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import {Link, useRouter} from '@/i18n/navigation'
 import { useTransition } from 'react'
 
 interface CustomLinkProps extends React.ComponentProps<typeof Link> {
