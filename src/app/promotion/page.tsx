@@ -10,7 +10,7 @@ export default function PromotionPage() {
     <main className="bg-[#FFFEFE]">
       <PromotionSection
         imagePosition="right"
-        imageSrc="/promotion/promotion-1.png"
+        imageSrc="/promotion/promotion-1.webp"
         title="พิเศษสำหรับลูกค้าใหม่ 🔥"
         features={[
           'ฟรี! ค่าธรรมเนียมราชการจดบริษัท มูลค่า 5,200 บาท',
@@ -21,7 +21,7 @@ export default function PromotionPage() {
 
       <PromotionSection
         imagePosition="left"
-        imageSrc="/promotion/promotion-2.png"
+        imageSrc="/promotion/promotion-2.webp"
         title="พิเศษสำหรับลูกค้าบัญชี 💡"
         features={[
           'ฟรี! บริการบันทึกบัญชี มูลค่ากว่า 3,500 บาท',

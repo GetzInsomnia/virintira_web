@@ -12,7 +12,7 @@ export default function HeroSection() {
       className="relative min-h-[calc(100dvh-var(--header-height))] lg:pt-25 flex items-center justify-center text-center px-6 bg-[#FFFEFE] snap-start"
     >
       {/* Background image */}
-      <div className="absolute -top-[10px] inset-x-0 bottom-0 z-0 bg-[url('/bg-hero.png')] bg-cover bg-center opacity-15"></div>
+      <div className="absolute -top-[10px] inset-x-0 bottom-0 z-0 bg-[url('/bg-hero.webp')] bg-cover bg-center opacity-15"></div>
 
       {/* Foreground content */}
       <div className="relative z-10 max-w-xl mx-auto space-y-6">
