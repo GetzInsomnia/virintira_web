@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import {useRouter, usePathname, useLocale} from 'next-intl/client'
+// Use the navigation helpers from next-intl
+// https://next-intl.js.org/docs/routing/navigation
+import {useRouter, usePathname, useLocale} from 'next-intl/navigation'
 
 export default function LanguageSwitcher() {
   const [dropdownOpen, setDropdownOpen] = useState(false)

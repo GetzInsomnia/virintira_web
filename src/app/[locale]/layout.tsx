@@ -1,4 +1,5 @@
-import './globals.css'
+// Global styles are one level up from this layout
+import '../globals.css'
 import { Prompt, Inter } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
 import StructuredData from '@/components/StructuredData'
