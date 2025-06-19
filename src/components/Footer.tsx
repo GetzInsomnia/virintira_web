@@ -15,7 +15,6 @@ export default function Footer() {
   const pathname = usePathname()
   const handleLogoClick = () => {
     if (pathname === '/') {
-      window.location.hash = 'herosection' // update hash for direct links
       const target = document.getElementById('herosection')
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' })
@@ -23,7 +22,7 @@ export default function Footer() {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } else {
-      window.location.href = '/#herosection'
+      window.location.href = '/?scrollToHero=true'
     }
   }
 

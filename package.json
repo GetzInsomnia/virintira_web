@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "next lint",
-    "test": "node test/mixed-header.test.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "framer-motion": "^12.12.2",
