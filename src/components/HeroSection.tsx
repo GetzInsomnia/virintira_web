@@ -3,8 +3,10 @@
 import ContactCTA from '@/components/ContactCTA'
 import { motion } from 'framer-motion'
 import TypewriterText from '@/components/TypewriterText'
+import {useTranslations} from 'next-intl'
 
 export default function HeroSection() {
+  const t = useTranslations('hero')
   return (
     <section
       id="herosection"
@@ -22,7 +24,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          สำนักงานบัญชีและบริหารธุรกิจครบวงจร
+          {t('title')}
         </motion.h1>
 
         <motion.div
@@ -31,7 +33,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <TypewriterText text="บริการไว ใช้งานง่าย ครบจบทุกเรื่องธุรกิจ" />
+          <TypewriterText text={t('subtitle')} />
         </motion.div>
 
         <motion.div
