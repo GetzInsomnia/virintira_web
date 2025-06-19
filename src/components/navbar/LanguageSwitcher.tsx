@@ -3,6 +3,10 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
+import {createLocalizedPathnamesNavigation} from 'next-intl/navigation'
+import {locales, localePrefix} from '../../i18n'
+const {useRouter, usePathname, useLocale} =
+  createLocalizedPathnamesNavigation({locales, localePrefix})
 
 export default function LanguageSwitcher() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
