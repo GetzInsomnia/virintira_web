@@ -3,18 +3,30 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
+import {createLocalizedPathnamesNavigation} from 'next-intl/navigation'
+import {locales, localePrefix} from '../../i18n'
+const {useRouter, usePathname, useLocale} =
+  createLocalizedPathnamesNavigation({locales, localePrefix})
 
 export default function LanguageSwitcher() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [currentLang, setCurrentLang] = useState<'TH' | 'EN'>('TH')
   const dropdownRef = useRef<HTMLDivElement | null>(null)
+  const router = useRouter()
+  const pathname = usePathname()
+  const locale = useLocale()
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev)
 
   const selectLang = (lang: 'TH' | 'EN') => {
     setCurrentLang(lang)
     setDropdownOpen(false)
+    router.push(pathname, {locale: lang.toLowerCase()})
   }
+
+  useEffect(() => {
+    setCurrentLang(locale.toUpperCase() as 'TH' | 'EN')
+  }, [locale])
 
   // ปิด dropdown เมื่อคลิกนอกเมนู
   useEffect(() => {
