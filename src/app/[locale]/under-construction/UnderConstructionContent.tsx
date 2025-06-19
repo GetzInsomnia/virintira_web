@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import {useTranslations} from 'next-intl'
 import ContactCTA from '@/components/ContactCTA'
 import BorderRevealButton from '@/components/BorderRevealButton'
 import { motion } from 'framer-motion'
@@ -21,6 +22,7 @@ function useIsMobile() {
 export default function UnderConstructionContent() {
   const [section, setSection] = useState('หมวดหมู่ไม่ระบุ')
   const [item, setItem] = useState('หัวข้อไม่ระบุ')
+  const t = useTranslations('UnderConstruction')
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -39,12 +41,12 @@ export default function UnderConstructionContent() {
 
         {/* หัวข้อ */}
         <h1 className="text-2xl sm:text-3xl font-bold text-[#A70909] mb-4 leading-relaxed">
-          ข้อมูลในหน้า <span className="underline">{section}</span> / <span className="underline">{item}</span> อยู่ระหว่างการพัฒนา
+          {t('title', {section, item})}
         </h1>
 
         {/* คำอธิบาย */}
         <p className="text-black text-lg sm:text-xl mb-10 leading-relaxed">
-          กรุณากลับมาใหม่เร็ว ๆ นี้
+          {t('description')}
         </p>
 
         {/* CTA + ปุ่มกลับ */}
@@ -56,7 +58,7 @@ export default function UnderConstructionContent() {
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
           >
             <BorderRevealButton href="/" className="text-xs py-1 px-3">
-              กลับไปหน้าแรก
+              {t('back')}
             </BorderRevealButton>
           </motion.div>
         </div>

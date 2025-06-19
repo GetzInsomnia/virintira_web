@@ -1,0 +1,19 @@
+{
+  "Navbar": {
+    "promotion": "Promotion",
+    "services": "Services",
+    "download": "Download documents",
+    "contact": "Contact us"
+  },
+  "Hero": {
+    "title": "One-stop accounting and business services",
+    "subtitle": "Fast service, easy to use, complete solutions"
+  },
+  "UnderConstruction": {
+    "title": "The page {section} / {item} is under construction",
+    "description": "Please check back soon.",
+    "back": "Back to home",
+    "notFoundTitle": "Page not found",
+    "notFoundDesc": "The link may be wrong or the content was moved"
+  }
+}

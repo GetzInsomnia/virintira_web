@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
     "lint": "next lint",
     "test": "node test/mixed-header.test.js"
   },
   "dependencies": {
     "framer-motion": "^12.12.2",
     "next": "15.3.2",
+    "next-intl": "^3.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
