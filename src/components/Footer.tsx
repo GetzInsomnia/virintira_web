@@ -44,7 +44,7 @@ export default function Footer() {
 
         {/* ที่อยู่บริษัท */}
         <div className="flex flex-col justify-center h-full text-left max-w-md px-2">
-          <CustomLink href="/under-construction" section="Footer" item="บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)">
+          <CustomLink href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap" section="Footer" item="บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)">
             บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)
           </CustomLink>
           <div className="space-y-1">
@@ -61,20 +61,20 @@ export default function Footer() {
           <div className="flex gap-6">
             {/* ฝั่งซ้าย */}
             <div className="flex flex-col gap-2">
-              <CustomLink href="/promotion" section="Footer" item="โปรโมชั่น">โปรโมชั่น</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="ดาวน์โหลดเอกสาร">ดาวน์โหลดเอกสาร</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="ติดต่อเรา">ติดต่อเรา</CustomLink>
+              <CustomLink href="/promotion" className="hover:underline text-[#A70909] font-medium" section="Footer" item="โปรโมชั่น">โปรโมชั่น</CustomLink>
+              <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item="ดาวน์โหลดเอกสาร">ดาวน์โหลดเอกสาร</CustomLink>
+              <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item="ติดต่อเรา">ติดต่อเรา</CustomLink>
             </div>
 
             {/* ฝั่งขวา */}
             <div className="flex flex-col gap-1">
               <span className="text-[#A70909] font-medium">บริการ</span>
               <div className="ml-3 mt-1 space-y-1 text-sm">
-                <CustomLink href="/under-construction" section="Footer" item="จดทะเบียน">จดทะเบียน</CustomLink>
-                <CustomLink href="/under-construction" section="Footer" item="แก้ไขข้อมูลนิติบุคคล">แก้ไขข้อมูลนิติบุคคล</CustomLink>
-                <CustomLink href="/under-construction" section="Footer" item="บัญชีและตรวจสอบ">บัญชีและตรวจสอบ</CustomLink>
-                <CustomLink href="/under-construction" section="Footer" item="ขอใบอนุญาต">ขอใบอนุญาต</CustomLink>
-                <CustomLink href="/under-construction" section="Footer" item="การตลาดออนไลน์">การตลาดออนไลน์</CustomLink>
+                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="จดทะเบียน">จดทะเบียน</CustomLink>
+                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="แก้ไขข้อมูลนิติบุคคล">แก้ไขข้อมูลนิติบุคคล</CustomLink>
+                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="บัญชีและตรวจสอบ">บัญชีและตรวจสอบ</CustomLink>
+                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="ขอใบอนุญาต">ขอใบอนุญาต</CustomLink>
+                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="การตลาดออนไลน์">การตลาดออนไลน์</CustomLink>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function Footer() {
             <span className="mt-2 font-bold text-[#A70909] text-2xl">ViRINTIRA</span>
           </div>
           <div className="text-left px-2">
-            <CustomLink href="/under-construction" section="Footer" item="บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)">
+            <CustomLink href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap" section="Footer" item="บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)">
               บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)
             </CustomLink>
             <div className="space-y-1">
@@ -131,18 +131,18 @@ export default function Footer() {
         {/* เมนูลิงก์ */}
         <div className="flex justify-center gap-10 px-2">
           <div className="flex flex-col gap-2">
-            <CustomLink href="/promotion" section="Footer" item="โปรโมชั่น">โปรโมชั่น</CustomLink>
-            <CustomLink href="/under-construction" section="Footer" item="ดาวน์โหลดเอกสาร">ดาวน์โหลดเอกสาร</CustomLink>
-            <CustomLink href="/under-construction" section="Footer" item="ติดต่อเรา">ติดต่อเรา</CustomLink>
+            <CustomLink href="/promotion" className="hover:underline text-[#A70909] font-medium" section="Footer" item="โปรโมชั่น">โปรโมชั่น</CustomLink>
+            <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item="ดาวน์โหลดเอกสาร">ดาวน์โหลดเอกสาร</CustomLink>
+            <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item="ติดต่อเรา">ติดต่อเรา</CustomLink>
           </div>
           <div className="flex flex-col gap-1">
             <span className="text-[#A70909] font-medium">บริการ</span>
             <div className="ml-3 mt-1 space-y-1 text-sm">
-              <CustomLink href="/under-construction" section="Footer" item="จดทะเบียน">จดทะเบียน</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="แก้ไขข้อมูลนิติบุคคล">แก้ไขข้อมูลนิติบุคคล</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="บัญชีและตรวจสอบ">บัญชีและตรวจสอบ</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="ขอใบอนุญาต">ขอใบอนุญาต</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="การตลาดออนไลน์">การตลาดออนไลน์</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="จดทะเบียน">จดทะเบียน</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="แก้ไขข้อมูลนิติบุคคล">แก้ไขข้อมูลนิติบุคคล</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="บัญชีและตรวจสอบ">บัญชีและตรวจสอบ</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="ขอใบอนุญาต">ขอใบอนุญาต</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="การตลาดออนไลน์">การตลาดออนไลน์</CustomLink>
             </div>
           </div>
         </div>
@@ -177,7 +177,7 @@ export default function Footer() {
 
         {/* ที่อยู่บริษัท */}
         <div className="indent-5 text-left px-2">
-          <CustomLink href="/under-construction" section="Footer" item="บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)">
+          <CustomLink href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap" section="Footer" item="บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)">
             บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)
           </CustomLink>
           <div className="space-y-1">
@@ -192,18 +192,18 @@ export default function Footer() {
         {/* เมนูลิงก์ */}
         <div className="flex justify-center gap-10 px-2">
           <div className="flex flex-col gap-2">
-            <CustomLink href="/promotion" section="Footer" item="โปรโมชั่น">โปรโมชั่น</CustomLink>
-            <CustomLink href="/under-construction" section="Footer" item="ดาวน์โหลดเอกสาร">ดาวน์โหลดเอกสาร</CustomLink>
-            <CustomLink href="/under-construction" section="Footer" item="ติดต่อเรา">ติดต่อเรา</CustomLink>
+            <CustomLink href="/promotion" className="hover:underline text-[#A70909] font-medium" section="Footer" item="โปรโมชั่น">โปรโมชั่น</CustomLink>
+            <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item="ดาวน์โหลดเอกสาร">ดาวน์โหลดเอกสาร</CustomLink>
+            <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item="ติดต่อเรา">ติดต่อเรา</CustomLink>
           </div>
           <div className="flex flex-col gap-1">
             <span className="text-[#A70909] font-medium">บริการ</span>
             <div className="ml-3 mt-1 space-y-1 text-sm">
-              <CustomLink href="/under-construction" section="Footer" item="จดทะเบียน">จดทะเบียน</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="แก้ไขข้อมูลนิติบุคคล">แก้ไขข้อมูลนิติบุคคล</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="บัญชีและตรวจสอบ">บัญชีและตรวจสอบ</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="ขอใบอนุญาต">ขอใบอนุญาต</CustomLink>
-              <CustomLink href="/under-construction" section="Footer" item="การตลาดออนไลน์">การตลาดออนไลน์</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="จดทะเบียน">จดทะเบียน</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="แก้ไขข้อมูลนิติบุคคล">แก้ไขข้อมูลนิติบุคคล</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="บัญชีและตรวจสอบ">บัญชีและตรวจสอบ</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="ขอใบอนุญาต">ขอใบอนุญาต</CustomLink>
+              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item="การตลาดออนไลน์">การตลาดออนไลน์</CustomLink>
             </div>
           </div>
         </div>

@@ -54,7 +54,7 @@ export default function LanguageSwitcher() {
             {locales.map((lang) => (
               <button
                 key={lang}
-                onClick={() => handleLanguageChange(lang)}
+                onClick={(e) => { e.stopPropagation(); handleLanguageChange(lang); }}
                 className={`w-full px-2 py-1 text-center hover:bg-gray-100 block ${
                   locale === lang ? 'bg-[#A70909] text-white' : ''
                 }`}
@@ -71,7 +71,7 @@ export default function LanguageSwitcher() {
         {locales.map((lang) => (
           <button
             key={lang}
-            onClick={() => handleLanguageChange(lang)}
+            onClick={(e) => { e.stopPropagation(); handleLanguageChange(lang); }}
             className={`flex items-center space-x-1 hover:opacity-80 transition-opacity ${
               locale === lang ? 'opacity-100' : 'opacity-50'
             }`}
