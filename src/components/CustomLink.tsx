@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
+import { useLocale } from 'next-intl'
 
 interface CustomLinkProps extends React.ComponentProps<typeof Link> {
   query?: Record<string, string>
@@ -22,12 +23,15 @@ export default function CustomLink({
 }: CustomLinkProps) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
+  const locale = useLocale()
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault()
     if (onClick) onClick()
 
     const path = typeof href === 'string' ? href : href.pathname || '/'
+
+    const localePath = path.startsWith('/') ? `/${locale}${path}` : `/${locale}/${path}`
 
     if (path === '/under-construction') {
       const finalQuery = {
@@ -44,7 +48,7 @@ export default function CustomLink({
       window.dispatchEvent(new CustomEvent('custom:navigate'))
 
       startTransition(() => {
-        router.push(path + qs)
+        router.push(localePath + qs)
       })
     } else {
       const finalQuery = {
@@ -61,7 +65,7 @@ export default function CustomLink({
       window.dispatchEvent(new CustomEvent('custom:navigate'))
 
       startTransition(() => {
-        router.push(path + qs)
+        router.push(localePath + qs)
       })
     }
   }
