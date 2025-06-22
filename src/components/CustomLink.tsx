@@ -29,22 +29,41 @@ export default function CustomLink({
 
     const path = typeof href === 'string' ? href : href.pathname || '/'
 
-    const finalQuery = {
-      ...(query || {}),
-      ...(section && { section }),
-      ...(item && { item }),
+    if (path === '/under-construction') {
+      const finalQuery = {
+        ...(query || {}),
+        ...(section && { section }),
+        ...(item && { item }),
+      }
+
+      const qs =
+        Object.keys(finalQuery).length > 0
+          ? '?' + new URLSearchParams(finalQuery).toString()
+          : ''
+
+      window.dispatchEvent(new CustomEvent('custom:navigate'))
+
+      startTransition(() => {
+        router.push(path + qs)
+      })
+    } else {
+      const finalQuery = {
+        ...(query || {}),
+        ...(section && { section }),
+        ...(item && { item }),
+      }
+
+      const qs =
+        Object.keys(finalQuery).length > 0
+          ? '?' + new URLSearchParams(finalQuery).toString()
+          : ''
+
+      window.dispatchEvent(new CustomEvent('custom:navigate'))
+
+      startTransition(() => {
+        router.push(path + qs)
+      })
     }
-
-    const qs =
-      Object.keys(finalQuery).length > 0
-        ? '?' + new URLSearchParams(finalQuery).toString()
-        : ''
-
-    window.dispatchEvent(new CustomEvent('custom:navigate'))
-
-    startTransition(() => {
-      router.push(path + qs)
-    })
   }
 
   return (

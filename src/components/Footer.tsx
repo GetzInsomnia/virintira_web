@@ -14,7 +14,8 @@ import {
 export default function Footer() {
   const pathname = usePathname()
   const handleLogoClick = () => {
-    if (pathname === '/') {
+    if (pathname === '/' || pathname === '/th' || pathname === '/en') {
+      // ถ้าอยู่หน้าแรก ให้ smooth scroll ไป hero section
       const target = document.getElementById('herosection')
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' })
@@ -22,7 +23,9 @@ export default function Footer() {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } else {
-      window.location.href = '/?scrollToHero=true'
+      // ถ้าอยู่หน้าอื่น ให้ไปหน้าแรก
+      const currentLocale = pathname.split('/')[1] || 'th'
+      window.location.href = `/${currentLocale}`
     }
   }
 

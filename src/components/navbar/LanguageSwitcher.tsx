@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { locales, localeInfo } from '../../../i18n'
 
@@ -13,6 +12,7 @@ export default function LanguageSwitcher() {
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const pathname = usePathname()
   const locale = useLocale()
+  const router = useRouter()
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev)
 
@@ -36,6 +36,12 @@ export default function LanguageSwitcher() {
     return `/${targetLocale}${pathWithoutLocale}`
   }
 
+  const handleLanguageChange = (targetLocale: string) => {
+    setDropdownOpen(false)
+    const newPath = getLocalePath(targetLocale)
+    router.push(newPath)
+  }
+
   return (
     <div ref={dropdownRef} className="relative">
       {/* Mobile */}
@@ -46,16 +52,15 @@ export default function LanguageSwitcher() {
         {dropdownOpen && (
           <div className="absolute -left-4.5 mt-4 bg-white border border-gray-300 rounded shadow-md py-1 text-sm w-14 z-50">
             {locales.map((lang) => (
-              <Link
+              <button
                 key={lang}
-                href={getLocalePath(lang)}
+                onClick={() => handleLanguageChange(lang)}
                 className={`w-full px-2 py-1 text-center hover:bg-gray-100 block ${
                   locale === lang ? 'bg-[#A70909] text-white' : ''
                 }`}
-                onClick={() => setDropdownOpen(false)}
               >
                 {lang.toUpperCase()}
-              </Link>
+              </button>
             ))}
           </div>
         )}
@@ -64,9 +69,9 @@ export default function LanguageSwitcher() {
       {/* PC */}
       <div className="hidden lg:flex items-center space-x-2">
         {locales.map((lang) => (
-          <Link
+          <button
             key={lang}
-            href={getLocalePath(lang)}
+            onClick={() => handleLanguageChange(lang)}
             className={`flex items-center space-x-1 hover:opacity-80 transition-opacity ${
               locale === lang ? 'opacity-100' : 'opacity-50'
             }`}
@@ -78,7 +83,7 @@ export default function LanguageSwitcher() {
               height={16} 
             />
             <span className="text-sm text-black">{lang.toUpperCase()}</span>
-          </Link>
+          </button>
         ))}
       </div>
     </div>
