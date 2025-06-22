@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "title": "VIRINTIRA Accounting Office",
+    "subtitle": "Professional Accounting, Company Registration, Tax, Audit and More",
+    "description": "Comprehensive services for businesses of all sizes, from small businesses to large corporations",
+    "cta": "Free Consultation"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive services for your business",
+    "accounting": {
+      "title": "Accounting Services",
+      "description": "Bookkeeping, Financial Statements, Tax"
+    },
+    "registration": {
+      "title": "Company Registration",
+      "description": "Partnership, Company, Association, Foundation Registration"
+    },
+    "tax": {
+      "title": "Tax Services",
+      "description": "Tax Planning, Tax Clearance, Tax Audit"
+    },
+    "audit": {
+      "title": "Audit Services",
+      "description": "Financial Audit, Internal Audit"
+    },
+    "marketing": {
+      "title": "Online Marketing",
+      "description": "Website Development, Digital Marketing"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Over 10 Years of Experience",
+    "description": "VIRINTIRA Accounting Office provides comprehensive accounting, tax, and business services with experienced and specialized team"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "subtitle": "What makes us different",
+    "experience": {
+      "title": "Over 10 Years of Experience",
+      "description": "Experienced and specialized team"
+    },
+    "quality": {
+      "title": "Service Quality",
+      "description": "Service with care and responsibility"
+    },
+    "support": {
+      "title": "After-Sales Service",
+      "description": "Continuous consultation and support"
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Simple, Convenient, Fast",
+    "step1": {
+      "title": "Consult",
+      "description": "Consult and plan the work process"
+    },
+    "step2": {
+      "title": "Execute",
+      "description": "Execute according to the planned process"
+    },
+    "step3": {
+      "title": "Deliver",
+      "description": "Deliver results and provide ongoing consultation"
+    }
+  }
+} 

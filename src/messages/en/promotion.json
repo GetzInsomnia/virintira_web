@@ -1,0 +1,17 @@
+{
+  "title": "Special Promotions",
+  "subtitle": "Special offers for new customers",
+  "description": "Get special discounts on our various services",
+  "promotions": {
+    "newClient": {
+      "title": "New Client",
+      "description": "Get 20% discount for new clients",
+      "validUntil": "Valid until December 31, 2024"
+    },
+    "package": {
+      "title": "Complete Package",
+      "description": "Comprehensive services at special price",
+      "validUntil": "Valid until December 31, 2024"
+    }
+  }
+} 

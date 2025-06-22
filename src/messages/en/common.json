@@ -1,0 +1,25 @@
+{
+  "nav": {
+    "promotion": "Promotions",
+    "services": "Services",
+    "download": "Downloads",
+    "contact": "Contact Us"
+  },
+  "footer": {
+    "company": "Company",
+    "services": "Services",
+    "contact": "Contact",
+    "follow": "Follow Us"
+  },
+  "buttons": {
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "download": "Download",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "meta": {
+    "title": "VIRINTIRA Accounting Office | Complete Accounting and Business Management Services",
+    "description": "Professional accounting, tax, business registration, and online marketing services"
+  }
+} 
