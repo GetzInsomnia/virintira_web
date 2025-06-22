@@ -71,12 +71,11 @@ export default function PromotionSection({
                             transition={{ duration: 0.8 }}
                         >
                             <motion.span
-                                animate={animated ? { scale: [1, 1.1, 1] } : {}}
+                                whileInView={{ scale: [1, 1.1, 1] }}
+                                viewport={{ once: true }}
                                 transition={{
                                     duration: 1.0,
-                                    repeat: animated ? Infinity : 0,
                                     ease: 'easeInOut',
-                                    repeatDelay: 1.5,
                                 }}
                                 className="inline-block w-full text-center lg:text-left"
                             >
