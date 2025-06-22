@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://virintira.com/promotion' },
 };
 
-export default function PromotionPage() {
+function PromotionPageContent() {
   const t = useTranslations('promotion');
 
   return (
@@ -51,4 +51,13 @@ export default function PromotionPage() {
       </div>
     </div>
   );
+}
+
+export default async function PromotionPage({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  await params; // รอ params เพื่อให้ Next.js 15 ทำงานได้
+  return <PromotionPageContent />;
 } 

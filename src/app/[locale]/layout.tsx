@@ -22,7 +22,8 @@ const fontEN = Inter({
   weight: ['400', '700']
 });
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   return {
     title: locale === 'th' 
       ? 'สำนักงานบัญชี VIRINTIRA | สำนักงานบัญชีและบริหารธุรกิจครบวงจร'
@@ -52,18 +53,13 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function LocaleLayout({ 
+function LocaleLayoutContent({ 
   children, 
-  params: { locale } 
+  locale 
 }: { 
   children: ReactNode; 
-  params: { locale: string } 
+  locale: string 
 }) {
-  // ตรวจสอบว่า locale ถูกต้องหรือไม่
-  if (!locales.includes(locale as Locale)) {
-    notFound();
-  }
-
   const messages = useMessages();
 
   return (
@@ -103,4 +99,21 @@ export default function LocaleLayout({
       </body>
     </html>
   );
+}
+
+export default async function LocaleLayout({ 
+  children, 
+  params 
+}: { 
+  children: ReactNode; 
+  params: Promise<{ locale: string }> 
+}) {
+  const { locale } = await params;
+  
+  // ตรวจสอบว่า locale ถูกต้องหรือไม่
+  if (!locales.includes(locale as Locale)) {
+    notFound();
+  }
+
+  return <LocaleLayoutContent locale={locale}>{children}</LocaleLayoutContent>;
 } 

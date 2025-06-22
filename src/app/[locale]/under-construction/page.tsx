@@ -6,6 +6,11 @@ export const generateMetadata = (): Metadata => ({
   alternates: { canonical: 'https://virintira.com/under-construction' },
 })
 
-export default function UnderConstructionPage() {
+export default async function UnderConstructionPage({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  await params; // รอ params เพื่อให้ Next.js 15 ทำงานได้
   return <UnderConstructionContent />
 }

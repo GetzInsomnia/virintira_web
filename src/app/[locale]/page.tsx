@@ -25,6 +25,11 @@ function HomePageContent() {
   );
 }
 
-export default function HomePage() {
+export default async function HomePage({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  await params; // รอ params เพื่อให้ Next.js 15 ทำงานได้
   return <HomePageContent />;
 } 

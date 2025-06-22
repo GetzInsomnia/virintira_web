@@ -29,6 +29,13 @@ export default function LanguageSwitcher() {
     }
   }, [])
 
+  // สร้าง path สำหรับแต่ละ locale
+  const getLocalePath = (targetLocale: string) => {
+    // ลบ locale ปัจจุบันออกจาก pathname
+    const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/'
+    return `/${targetLocale}${pathWithoutLocale}`
+  }
+
   return (
     <div ref={dropdownRef} className="relative">
       {/* Mobile */}
@@ -41,8 +48,7 @@ export default function LanguageSwitcher() {
             {locales.map((lang) => (
               <Link
                 key={lang}
-                href={pathname}
-                locale={lang}
+                href={getLocalePath(lang)}
                 className={`w-full px-2 py-1 text-center hover:bg-gray-100 block ${
                   locale === lang ? 'bg-[#A70909] text-white' : ''
                 }`}
@@ -60,8 +66,7 @@ export default function LanguageSwitcher() {
         {locales.map((lang) => (
           <Link
             key={lang}
-            href={pathname}
-            locale={lang}
+            href={getLocalePath(lang)}
             className={`flex items-center space-x-1 hover:opacity-80 transition-opacity ${
               locale === lang ? 'opacity-100' : 'opacity-50'
             }`}
