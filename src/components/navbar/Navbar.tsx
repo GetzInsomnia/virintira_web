@@ -93,7 +93,7 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 w-full z-50 bg-[#FFFEFE]"
+      className="fixed top-0 left-0 w-full z-50 bg-[#FFFEFE] min-h-[72px]"
     >
       <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
         {/* โลโก้ + ชื่อ */}
