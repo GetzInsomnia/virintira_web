@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import CustomLink from '@/components/CustomLink'
 import Image from 'next/image'
 
 const services = [
@@ -52,10 +52,15 @@ export default function PopularServices() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[340px] sm:auto-rows-[280px] lg:auto-rows-[230px]">
           {services.map((service, index) => {
             const isBlurred = hoverIndex !== null && hoverIndex !== index
-            const href = `/under-construction?section=บริการยอดนิยม&item=${encodeURIComponent(service.title)}`
 
             return (
-              <Link href={href} key={index} className="contents">
+              <CustomLink
+                href="/under-construction"
+                section="บริการยอดนิยม"
+                item={service.title}
+                key={index}
+                className="contents"
+              >
                 <motion.div
                   onMouseEnter={() => setHoverIndex(index)}
                   onMouseLeave={() => setHoverIndex(null)}
@@ -88,7 +93,7 @@ export default function PopularServices() {
                     </p>
                   </div>
                 </motion.div>
-              </Link>
+              </CustomLink>
             )
           })}
         </div>

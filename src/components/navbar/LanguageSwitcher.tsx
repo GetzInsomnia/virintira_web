@@ -39,6 +39,7 @@ export default function LanguageSwitcher() {
     setDropdownOpen(false)
     const newPath = getLocalePath(targetLocale)
     window.location.href = newPath
+    window.location.reload()
   }
 
   return (

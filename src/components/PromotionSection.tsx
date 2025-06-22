@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import Image from 'next/image'
 import ContactCTA from '@/components/ContactCTA'
@@ -21,6 +21,11 @@ export default function PromotionSection({
     const [isOpen, setIsOpen] = useState(false)
     const headingRef = useRef(null)
     const isInView = useInView(headingRef, { once: true })
+    const [animated, setAnimated] = useState(false)
+
+    useEffect(() => {
+      if (isInView && !animated) setAnimated(true)
+    }, [isInView, animated])
 
     const isImageLeft = imagePosition === 'left'
 
@@ -66,10 +71,10 @@ export default function PromotionSection({
                             transition={{ duration: 0.8 }}
                         >
                             <motion.span
-                                animate={isInView ? { scale: [1, 1.1, 1] } : {}}
+                                animate={animated ? { scale: [1, 1.1, 1] } : {}}
                                 transition={{
                                     duration: 1.0,
-                                    repeat: Infinity,
+                                    repeat: animated ? Infinity : 0,
                                     ease: 'easeInOut',
                                     repeatDelay: 1.5,
                                 }}
