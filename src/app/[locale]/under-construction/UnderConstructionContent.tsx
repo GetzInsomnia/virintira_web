@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import ContactCTA from '@/components/ContactCTA'
 import BorderRevealButton from '@/components/BorderRevealButton'
 import { motion } from 'framer-motion'
+import { useSearchParams } from 'next/navigation'
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)
@@ -19,14 +20,9 @@ function useIsMobile() {
 }
 
 export default function UnderConstructionContent() {
-  const [section, setSection] = useState('หมวดหมู่ไม่ระบุ')
-  const [item, setItem] = useState('หัวข้อไม่ระบุ')
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    setSection(params.get('section') || 'หมวดหมู่ไม่ระบุ')
-    setItem(params.get('item') || 'หัวข้อไม่ระบุ')
-  }, [])
+  const searchParams = useSearchParams();
+  const section = searchParams.get('section') || 'หมวดหมู่ไม่ระบุ';
+  const item = searchParams.get('item') || 'หัวข้อไม่ระบุ';
 
   const [ctaExpanded, setCtaExpanded] = useState(false)
   const isMobile = useIsMobile()

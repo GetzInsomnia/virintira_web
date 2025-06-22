@@ -30,15 +30,14 @@ export default function LanguageSwitcher() {
 
   // สร้าง path สำหรับแต่ละ locale
   const getLocalePath = (targetLocale: string) => {
-    // ลบ locale ปัจจุบันออกจาก pathname
-    const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/'
+    // ลบ locale ปัจจุบันออกจาก pathname ด้วย regex
+    const pathWithoutLocale = pathname.replace(/^\/(th|en)/, '') || '/'
     return `/${targetLocale}${pathWithoutLocale}`
   }
 
   const handleLanguageChange = (targetLocale: string) => {
     setDropdownOpen(false)
     const newPath = getLocalePath(targetLocale)
-    // ใช้ window.location.href แทน router.push เพื่อให้เปลี่ยนภาษาถูกต้อง
     window.location.href = newPath
   }
 
