@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { Link, usePathname, useSearchParams } from 'next-intl/navigation'
 import { useLocale } from 'next-intl'
 import { locales, localeInfo } from '../../../i18n'
 
@@ -13,7 +13,6 @@ export default function LanguageSwitcher() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const locale = useLocale()
-  const router = useRouter()
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev)
 
@@ -30,20 +29,8 @@ export default function LanguageSwitcher() {
     }
   }, [])
 
-  // สร้าง path สำหรับแต่ละ locale
-  const getLocalePath = (targetLocale: string) => {
-    // ลบ locale ปัจจุบันออกจาก pathname ด้วย regex
-    const pathWithoutLocale = pathname.replace(/^\/(th|en)/, '') || '/'
-    const query = searchParams.toString()
-    return `/${targetLocale}${pathWithoutLocale}${query ? `?${query}` : ''}`
-  }
-
-  const handleLanguageChange = (targetLocale: string) => {
-    setDropdownOpen(false)
-    const newPath = getLocalePath(targetLocale)
-    router.push(newPath)
-    router.refresh()
-  }
+  const query = searchParams.toString()
+  const href = `${pathname}${query ? `?${query}` : ''}`
 
   return (
     <div ref={dropdownRef} className="relative">
@@ -54,17 +41,19 @@ export default function LanguageSwitcher() {
         </button>
         {dropdownOpen && (
           <div className="absolute -left-4.5 mt-4 bg-white border border-gray-300 rounded shadow-md py-1 text-sm w-14 z-50">
-            {locales.map((lang) => (
-              <button
-                key={lang}
-                onClick={(e) => { e.stopPropagation(); handleLanguageChange(lang); }}
-                className={`w-full px-2 py-1 text-center hover:bg-gray-100 block ${
-                  locale === lang ? 'bg-[#A70909] text-white' : ''
-                }`}
-              >
-                {lang.toUpperCase()}
-              </button>
-            ))}
+          {locales.map((lang) => (
+            <Link
+              key={lang}
+              href={href}
+              locale={lang}
+              className={`w-full px-2 py-1 text-center hover:bg-gray-100 block ${
+                locale === lang ? 'bg-[#A70909] text-white' : ''
+              }`}
+              onClick={() => setDropdownOpen(false)}
+            >
+              {lang.toUpperCase()}
+            </Link>
+          ))}
           </div>
         )}
       </div>
@@ -72,21 +61,22 @@ export default function LanguageSwitcher() {
       {/* PC */}
       <div className="hidden lg:flex items-center space-x-2">
         {locales.map((lang) => (
-          <button
+          <Link
             key={lang}
-            onClick={(e) => { e.stopPropagation(); handleLanguageChange(lang); }}
+            href={href}
+            locale={lang}
             className={`flex items-center space-x-1 hover:opacity-80 transition-opacity ${
               locale === lang ? 'opacity-100' : 'opacity-50'
             }`}
           >
-            <Image 
-              src={localeInfo[lang as keyof typeof localeInfo]?.flag || `/flags/${lang}.png`} 
-              alt={localeInfo[lang as keyof typeof localeInfo]?.name || lang.toUpperCase()} 
-              width={24} 
-              height={16} 
+            <Image
+              src={localeInfo[lang as keyof typeof localeInfo]?.flag || `/flags/${lang}.png`}
+              alt={localeInfo[lang as keyof typeof localeInfo]?.name || lang.toUpperCase()}
+              width={24}
+              height={16}
             />
             <span className="text-sm text-black">{lang.toUpperCase()}</span>
-          </button>
+          </Link>
         ))}
       </div>
     </div>
