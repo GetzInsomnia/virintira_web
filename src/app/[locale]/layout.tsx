@@ -1,4 +1,5 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { locales, Locale } from '../../../i18n';
@@ -131,5 +132,7 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  unstable_setRequestLocale(locale);
+
   return <LocaleLayoutContent locale={locale}>{children}</LocaleLayoutContent>;
-} 
+}
