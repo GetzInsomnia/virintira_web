@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { locales, localeInfo } from '../../../i18n'
 
@@ -11,6 +11,7 @@ export default function LanguageSwitcher() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const locale = useLocale()
   const router = useRouter()
 
@@ -33,13 +34,15 @@ export default function LanguageSwitcher() {
   const getLocalePath = (targetLocale: string) => {
     // ลบ locale ปัจจุบันออกจาก pathname ด้วย regex
     const pathWithoutLocale = pathname.replace(/^\/(th|en)/, '') || '/'
-    return `/${targetLocale}${pathWithoutLocale}`
+    const query = searchParams.toString()
+    return `/${targetLocale}${pathWithoutLocale}${query ? `?${query}` : ''}`
   }
 
   const handleLanguageChange = (targetLocale: string) => {
     setDropdownOpen(false)
     const newPath = getLocalePath(targetLocale)
     router.push(newPath)
+    router.refresh()
   }
 
   return (
