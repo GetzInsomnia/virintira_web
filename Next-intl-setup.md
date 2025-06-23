@@ -115,23 +115,27 @@ import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { locales } from '../../../i18n';
 import '../globals.css';
-import { Prompt, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import Navbar from '@/components/navbar/Navbar';
 import StructuredData from '@/components/StructuredData';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
-const fontTH = Prompt({
-  subsets: ['thai'],
+const fontTH = localFont({
   variable: '--font-th',
-  weight: ['400', '700']
+  src: [
+    { path: '../../../public/fonts/Prompt/Prompt-Regular.ttf', weight: '400' },
+    { path: '../../../public/fonts/Prompt/Prompt-Bold.ttf', weight: '700' }
+  ]
 });
 
-const fontEN = Inter({
-  subsets: ['latin'],
+const fontEN = localFont({
   variable: '--font-en',
-  weight: ['400', '700']
+  src: [
+    { path: '../../../public/fonts/Inter/static/Inter_24pt-Regular.ttf', weight: '400' },
+    { path: '../../../public/fonts/Inter/static/Inter_24pt-Bold.ttf', weight: '700' }
+  ]
 });
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
