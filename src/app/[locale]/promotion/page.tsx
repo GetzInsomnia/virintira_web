@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default function PromotionPage() {
-  const t = useTranslations('promotion');
+  const t = useTranslations();
   return (
     <main className="bg-[#FFFEFE]">
       <PromotionSection
