@@ -29,10 +29,44 @@
       "description": "Website Development, Digital Marketing"
     }
   },
+  "popularServices": {
+    "title": "Popular Services",
+    "registration": {
+      "title": "Company Registration",
+      "description": "Comprehensive company and partnership registration services"
+    },
+    "editInfo": {
+      "title": "Corporate Information Update",
+      "description": "Modify various company details"
+    },
+    "accounting": {
+      "title": "Monthly Accounting",
+      "description": "Bookkeeping and accurate tax filing"
+    },
+    "closeFinancial": {
+      "title": "Financial Statement Closing",
+      "description": "Certified auditor closing service"
+    },
+    "tax": {
+      "title": "Tax Planning",
+      "description": "Optimize tax strategy for your business"
+    },
+    "license": {
+      "title": "Business Licenses",
+      "description": "Obtain necessary permits for your company"
+    }
+  },
   "about": {
     "title": "About Us",
     "subtitle": "Over 10 Years of Experience",
-    "description": "VIRINTIRA Accounting Office provides comprehensive accounting, tax, and business services with experienced and specialized team"
+    "description": "VIRINTIRA Accounting Office provides comprehensive accounting, tax, and business services with experienced and specialized team",
+    "blockquote1": "Virintira — More than just an accounting office",
+    "blockquote2": "We're your all-in-one business partner",
+    "p1": "With more than 10 years of experience, Virintira can take care of everything from company registration and monthly accounting to license applications, tax planning and online marketing",
+    "p2": "We understand you want to focus on growing your business, so leave the back-office work to us",
+    "p3": "Rest assured we will never abandon your work and are fully trustworthy as we are properly registered with the Department of Business Development",
+    "p4": "With comprehensive, fast and transparent services, we stand by you every step of the way because you are our valued customer",
+    "button": "About Virintira"
   },
   "whyChooseUs": {
     "title": "Why Choose Us",

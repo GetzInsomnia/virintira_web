@@ -4,9 +4,11 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import BorderRevealButton from '@/components/BorderRevealButton'
+import { useTranslations } from 'next-intl'
 
 export default function AboutSection() {
   const [isOpen, setIsOpen] = useState(false)
+  const t = useTranslations()
 
   return (
     <section
@@ -23,22 +25,21 @@ export default function AboutSection() {
           transition={{ duration: 0.8 }}
         >
           <blockquote className="text-[#A70909] text-xl lg:text-3xl font-semibold leading-relaxed mb-6 border-l-4 border-[#A70909] pl-4">
-            <p>Virintira — ไม่ใช่แค่สำนักงานบัญชี</p>
-            <p>แต่คือพาร์ตเนอร์ธุรกิจครบวงจรของคุณ</p>
+            <p>{t('about.blockquote1')}</p>
+            <p>{t('about.blockquote2')}</p>
           </blockquote>
-
           <div className="text-base lg:text-lg text-gray-800 space-y-6 leading-relaxed">
             <p className="indent-6">
-              ด้วยทีมงานที่มีประสบการณ์กว่า 10 ปี Virintira พร้อมดูแลคุณในทุกด้านของการทำธุรกิจ — ไม่ว่าจะเป็นงานจดทะเบียนบริษัท การทำบัญชีรายเดือน ขอใบอนุญาตต่างๆ ไปจนถึงการวางแผนภาษีและการตลาดออนไลน์
+              {t('about.p1')}
             </p>
             <p className="indent-6">
-              เราเข้าใจว่าคุณต้องการมุ่งมั่นกับสิ่งที่คุณทำได้ดีที่สุด นั่นคือ “การพัฒนาธุรกิจของคุณ” ส่วนเรื่องหลังบ้าน ปล่อยให้เราเป็นคนจัดการ
+              {t('about.p2')}
             </p>
             <p className="indent-6">
-              คุณสามารถมั่นใจได้ว่าเราไม่ทิ้งงานแน่นอน และเราสามารถเชื่อถือได้ เพราะเราจดทะเบียนกับกรมพัฒนาธุรกิจการค้าอย่างถูกต้อง
+              {t('about.p3')}
             </p>
             <p className="indent-6">
-              ด้วยบริการที่ครบวงจร รวดเร็ว ใส่ใจ และโปร่งใส — เราอยู่เคียงข้างคุณในทุกก้าวของการเติบโต เพราะคุณคือ “ลูกค้าคนสำคัญ” ของเราเสมอ
+              {t('about.p4')}
             </p>
           </div>
 
@@ -50,9 +51,9 @@ export default function AboutSection() {
               <BorderRevealButton
                 href="/under-construction"
                 section="Homepage"
-                item="เกี่ยวกับ Virintira"
+                item={t('about.button')}
               >
-                <span className="text-sm lg:text-base">เกี่ยวกับ Virintira</span>
+                  <span className="text-sm lg:text-base">{t('about.button')}</span>
               </BorderRevealButton>
 
             </motion.div>
