@@ -115,23 +115,43 @@ import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { locales } from '../../../i18n';
 import '../globals.css';
-import { Prompt, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import Navbar from '@/components/navbar/Navbar';
 import StructuredData from '@/components/StructuredData';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
-const fontTH = Prompt({
-  subsets: ['thai'],
-  variable: '--font-th',
-  weight: ['400', '700']
+const fontTH = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/Prompt/Prompt-Regular.woff2',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../../../public/fonts/Prompt/Prompt-Bold.woff2',
+      weight: '700',
+      style: 'normal'
+    }
+  ],
+  variable: '--font-th'
 });
 
-const fontEN = Inter({
-  subsets: ['latin'],
-  variable: '--font-en',
-  weight: ['400', '700']
+const fontEN = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/Inter/Inter-Regular.woff2',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../../../public/fonts/Inter/Inter-Bold.woff2',
+      weight: '700',
+      style: 'normal'
+    }
+  ],
+  variable: '--font-en'
 });
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
@@ -217,6 +237,9 @@ export default function LocaleLayout({
   );
 }
 ```
+
+The `Prompt` and `Inter` font files referenced above live under
+`public/fonts`, so they are bundled with your application and served locally.
 
 ### 5. src/app/[locale]/page.tsx
 ```typescript
