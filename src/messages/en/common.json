@@ -18,6 +18,12 @@
     "submit": "Submit",
     "cancel": "Cancel"
   },
+  "companyName": "Virintira Co., Ltd. (Head Office)",
+  "footerRights": "© 2025 Virintira Co. Ltd. All rights reserved.",
+  "contactCTA": {
+    "call": "Call 092-882-5556",
+    "chat": "Chat now!"
+  },
   "meta": {
     "title": "VIRINTIRA Accounting Office | Complete Accounting and Business Management Services",
     "description": "Professional accounting, tax, business registration, and online marketing services"
