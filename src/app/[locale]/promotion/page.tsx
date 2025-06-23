@@ -7,27 +7,27 @@ export const metadata: Metadata = {
 };
 
 export default function PromotionPage() {
-  const t = useTranslations('promotion');
+  const t = useTranslations();
   return (
     <main className="bg-[#FFFEFE]">
       <PromotionSection
         imagePosition="right"
         imageSrc="/promotion/promotion-1.webp"
-        title={t('พิเศษสำหรับลูกค้าใหม่ 🔥')}
+        title={t('promo.newClient.title')}
         features={[
-          t('ฟรี! ค่าธรรมเนียมราชการจดบริษัท มูลค่า 5,200 บาท'),
-          t('ฟรี! ค่าคัดหนังสือรับรองชุดใหญ่ มูลค่า 1,100 บาท'),
-          t('ฟรี! บริการแถมต่างๆ รวมมูลค่ากว่า 7,900 บาท'),
+          t('promo.newClient.f1'),
+          t('promo.newClient.f2'),
+          t('promo.newClient.f3'),
         ]}
       />
       <PromotionSection
         imagePosition="left"
         imageSrc="/promotion/promotion-2.webp"
-        title={t('พิเศษสำหรับลูกค้าบัญชี 💡')}
+        title={t('promo.accounting.title')}
         features={[
-          t('ฟรี! บริการบันทึกบัญชี มูลค่ากว่า 3,500 บาท'),
-          t('ฟรี! บริการที่ปรึกษาธุรกิจไม่จำกัดจำนวนครั้ง'),
-          t('ฟรี! บริการวางแผนภาษีที่เหมาะกับธุรกิจของคุณโดยเฉพาะ'),
+          t('promo.accounting.f1'),
+          t('promo.accounting.f2'),
+          t('promo.accounting.f3'),
         ]}
       />
     </main>

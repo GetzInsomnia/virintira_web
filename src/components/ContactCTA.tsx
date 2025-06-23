@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 // Framer Motion was replaced with simple CSS transitions for smoother mobile performance
 import { FaPhoneAlt, FaLine } from 'react-icons/fa'
 
@@ -10,6 +11,7 @@ type ContactCTAProps = {
 
 export default function ContactCTA({ onExpandChange }: ContactCTAProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const t = useTranslations()
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export default function ContactCTA({ onExpandChange }: ContactCTAProps) {
           href="tel:0928825556"
           className="flex items-center justify-center gap-2 px-4 h-10 border-2 border-[#A70909] rounded-full text-[#A70909] font-medium text-sm hover:bg-[#A70909] hover:text-white transition-all duration-200 w-[190px]"
         >
-          <FaPhoneAlt className="text-base" /> โทร 092-882-5556
+          <FaPhoneAlt className="text-base" /> {t('contactCTA.call')}
         </a>
         <a
           href="https://lin.ee/TBe5njP"
@@ -45,14 +47,14 @@ export default function ContactCTA({ onExpandChange }: ContactCTAProps) {
           rel="noopener noreferrer"
           className="flex items-center justify-center h-10 px-4 rounded-full bg-[#06C755] text-white text-sm font-medium transition-all duration-200 hover:brightness-110 w-[190px]"
         >
-          <FaLine className="text-2xl mr-2" /> แชทเลย!
+          <FaLine className="text-2xl mr-2" /> {t('contactCTA.chat')}
         </a>
       </div>
       <button
         className={`px-6 py-2 text-white bg-[#A70909] rounded-full text-base font-medium hover:bg-[#C9341F] transition transform ${isOpen ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'}`}
         onClick={() => setIsOpen(true)}
       >
-        ขอคำปรึกษาฟรี
+        {t('hero.cta')}
       </button>
     </div>
   )
