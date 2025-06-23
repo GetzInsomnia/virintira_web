@@ -264,8 +264,7 @@ export default function HomePage() {
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import Link from 'next-intl/link'
-import { usePathname } from 'next-intl/client'
+import { Link, usePathname } from 'next-intl/navigation'
 import { useLocale } from 'next-intl'
 import { locales, localeInfo } from '../../../i18n'
 
@@ -422,7 +421,7 @@ export default function MyComponent() {
 
 ### 2. การใช้ Link ใน Component
 ```typescript
-import Link from 'next-intl/link';
+import { Link } from 'next-intl/navigation';
 
 export default function Navigation() {
   return (
@@ -436,7 +435,7 @@ export default function Navigation() {
 
 ### 3. การใช้ usePathname และ useLocale
 ```typescript
-import { usePathname } from 'next-intl/client';
+import { usePathname } from 'next-intl/navigation';
 import { useLocale } from 'next-intl';
 
 export default function LanguageSwitcher() {
