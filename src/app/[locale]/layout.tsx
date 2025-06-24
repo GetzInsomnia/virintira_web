@@ -78,8 +78,8 @@ function LocaleLayoutContent({
 }) {
   const messages = useMessages();
 
-  return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    return (
+      <html key={locale} lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
         <style>{`:root{--header-height:72px;}`}</style>
         <StructuredData />
@@ -98,7 +98,7 @@ function LocaleLayoutContent({
         </Script>
       </head>
       <body className={`${fontTH.variable} ${fontEN.variable} font-[var(--font-th)] overflow-x-hidden overflow-y-hidden`}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
           <Navbar />
           <main
             id="main"
