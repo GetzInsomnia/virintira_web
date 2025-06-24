@@ -30,13 +30,9 @@ export default function LanguageSwitcher() {
     }
   }, [])
 
-  // สร้าง path สำหรับแต่ละ locale
-  const getLocalePath = (targetLocale: string) => {
-    // ลบ locale ปัจจุบันออกจาก pathname ด้วย regex
-    const pathWithoutLocale = pathname.replace(/^\/(th|en)/, '') || '/'
-    const query = searchParams.toString()
-    return `/${targetLocale}${pathWithoutLocale}${query ? `?${query}` : ''}`
-  }
+  const pathWithoutLocale = pathname.replace(/^\/(th|en)/, '') || '/'
+  const query = searchParams.toString()
+  const href = `${pathWithoutLocale}${query ? `?${query}` : ''}`
 
 
   return (
@@ -51,7 +47,8 @@ export default function LanguageSwitcher() {
             {locales.map((lang) => (
               <Link
                 key={lang}
-                href={getLocalePath(lang)}
+                href={href}
+                locale={lang}
                 className={`w-full px-2 py-1 text-center hover:bg-gray-100 block ${
                   locale === lang ? 'bg-[#A70909] text-white' : ''
                 }`}
@@ -69,7 +66,8 @@ export default function LanguageSwitcher() {
         {locales.map((lang) => (
           <Link
             key={lang}
-            href={getLocalePath(lang)}
+            href={href}
+            locale={lang}
             className={`flex items-center space-x-1 hover:opacity-80 transition-opacity ${
               locale === lang ? 'opacity-100' : 'opacity-50'
             }`}
