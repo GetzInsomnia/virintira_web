@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import { Link, usePathname, useSearchParams } from 'next-intl/navigation'
+import Link from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { locales, localeInfo } from '../../../i18n'
 
