@@ -5,6 +5,12 @@
     "download": "Downloads",
     "contact": "Contact Us"
   },
+  "mobileMenu": {
+    "promotion": "Promotions",
+    "services": "Services",
+    "download": "Downloads",
+    "contact": "Contact Us"
+  },
   "footer": {
     "company": "Company",
     "services": "Services",
