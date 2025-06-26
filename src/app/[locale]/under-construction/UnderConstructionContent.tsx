@@ -23,8 +23,9 @@ function useIsMobile() {
 export default function UnderConstructionContent() {
   const t = useTranslations()
   const searchParams = useSearchParams()
-  const section = searchParams.get('section') || 'หมวดหมู่ไม่ระบุ'
-  const item = searchParams.get('item') || 'หัวข้อไม่ระบุ'
+  const section =
+    searchParams.get('section') || t('underConstruction.unknownSection')
+  const item = searchParams.get('item') || t('underConstruction.unknownItem')
 
   const [ctaExpanded, setCtaExpanded] = useState(false)
   const isMobile = useIsMobile()
