@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import Image from 'next/image'
 import ContactCTA from '@/components/ContactCTA'
+import { useTranslations } from 'next-intl'
 
 interface PromotionSectionProps {
     imagePosition?: 'left' | 'right'
@@ -22,6 +23,7 @@ export default function PromotionSection({
     const headingRef = useRef(null)
     const isInView = useInView(headingRef, { once: true })
     const [animated, setAnimated] = useState(false)
+    const t = useTranslations()
 
     useEffect(() => {
       if (isInView && !animated) setAnimated(true)
@@ -92,7 +94,7 @@ export default function PromotionSection({
                             ))}
                         </ul>
 
-                        <p className="mt-6 text-sm text-gray-500">*เงื่อนไขเป็นไปตามที่บริษัทกำหนด</p>
+                        <p className="mt-6 text-sm text-gray-500">{t('promo.terms')}</p>
 
                         <div className="pt-8 flex justify-center lg:justify-start">
                             <motion.div
