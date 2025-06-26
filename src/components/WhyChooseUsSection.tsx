@@ -2,35 +2,37 @@
 
 import { FaUserTie, FaClock, FaComments, FaBalanceScale, FaThumbsUp, FaCheckCircle } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-const features = [
+const featureItems = [
   {
     icon: <FaCheckCircle className="text-6xl text-white" />,
-    title: 'บริการครบจบในที่เดียว'
+    titleKey: 'whyChooseUs.features.one'
   },
   {
     icon: <FaUserTie className="text-6xl text-white" />,
-    title: 'ทีมผู้เชี่ยวชาญประสบการณ์ 10+ ปี'
+    titleKey: 'whyChooseUs.features.two'
   },
   {
     icon: <FaClock className="text-6xl text-white" />,
-    title: 'ทำงานรวดเร็ว โปร่งใส ตรงเวลา'
+    titleKey: 'whyChooseUs.features.three'
   },
   {
     icon: <FaComments className="text-6xl text-white" />,
-    title: 'ให้คำปรึกษาฟรี ไม่จำกัดรอบ'
+    titleKey: 'whyChooseUs.features.four'
   },
   {
     icon: <FaBalanceScale className="text-6xl text-white" />,
-    title: 'ถูกต้องตามกฎหมาย 100%'
+    titleKey: 'whyChooseUs.features.five'
   },
   {
     icon: <FaThumbsUp className="text-6xl text-white" />,
-    title: 'รับผิดชอบ ไม่ทิ้งงาน'
+    titleKey: 'whyChooseUs.features.six'
   },
 ]
 
 export default function WhyChooseUsSection() {
+  const t = useTranslations()
   return (
     <section
       className="relative min-h-[calc(100dvh-var(--header-height))] snap-start overflow-hidden px-4 py-40 md:py-58 lg:py-50"
@@ -49,7 +51,7 @@ export default function WhyChooseUsSection() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 text-center">
-        {features.map((feature, index) => (
+        {featureItems.map((feature, index) => (
           <motion.div
             key={index}
             className="p-6 rounded-xl"
@@ -59,7 +61,7 @@ export default function WhyChooseUsSection() {
             viewport={{ once: true }}
           >
             <div className="flex justify-center mb-4">{feature.icon}</div>
-            <h3 className="text-white font-semibold text-lg lg:text-xl leading-relaxed">{feature.title}</h3>
+            <h3 className="text-white font-semibold text-lg lg:text-xl leading-relaxed">{t(feature.titleKey)}</h3>
           </motion.div>
         ))}
       </div>
