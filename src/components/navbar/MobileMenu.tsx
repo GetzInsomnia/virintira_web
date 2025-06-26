@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import MobileMenuView from './MobileMenuView'
 
 interface MenuItem {
@@ -10,93 +11,6 @@ interface MenuItem {
   subItems?: MenuItem[]
 }
 
-const mainMenu: MenuItem[] = [
-  {
-    label: 'โปรโมชั่น 🔥',
-    href: '/promotion',
-  },
-  {
-    label: 'บริการ',
-    href: '/under-construction',
-    subItems: [
-      {
-        label: 'จดทะเบียน',
-        href: '/under-construction',
-        subItems: [
-          { label: 'บริษัทจำกัด', href: '/under-construction' },
-          { label: 'ห้างหุ้นส่วนจำกัด', href: '/under-construction' },
-          { label: 'มูลนิธิ', href: '/under-construction' },
-          { label: 'สมาคม', href: '/under-construction' },
-          { label: 'ทะเบียนพาณิชย์ร้านค้า', href: '/under-construction' },
-          { label: 'ขึ้นทะเบียนนายจ้าง', href: '/under-construction' },
-          { label: 'ภาษีมูลค่าเพิ่ม', href: '/under-construction' },
-        ],
-      },
-      {
-        label: 'แก้ไขข้อมูลนิติบุคคล',
-        href: '/under-construction',
-        subItems: [
-          { label: 'ชื่อนิติบุคคล', href: '/under-construction' },
-          { label: 'ตรายาง', href: '/under-construction' },
-          { label: 'ข้อมูลกรรมการ', href: '/under-construction' },
-          { label: 'อำนาจลงนาม', href: '/under-construction' },
-          { label: 'ผู้ถือหุ้น', href: '/under-construction' },
-          { label: 'สัดส่วนหุ้น', href: '/under-construction' },
-          { label: 'เพิ่ม/ลดทุน', href: '/under-construction' },
-          { label: 'ย้ายที่ตั้ง', href: '/under-construction' },
-          { label: 'วัตถุประสงค์', href: '/under-construction' },
-          { label: 'เลิกกิจการ', href: '/under-construction' },
-        ],
-      },
-      {
-        label: 'บัญชีและตรวจสอบ',
-        href: '/under-construction',
-        subItems: [
-          { label: 'บัญชีนิติบุคคล', href: '/under-construction' },
-          { label: 'ภาษีรายเดือน', href: '/under-construction' },
-          { label: 'งบประจำปี', href: '/under-construction' },
-          { label: 'บัญชีบุคคลธรรมดา', href: '/under-construction' },
-          { label: 'ตรวจสอบบัญชี', href: '/under-construction' },
-          { label: 'วางแผนภาษี', href: '/under-construction' },
-          { label: 'ขอเลขผู้เสียภาษีชาวต่างชาติ', href: '/under-construction' },
-        ],
-      },
-      {
-        label: 'ขอใบอนุญาต',
-        href: '/under-construction',
-        subItems: [
-          { label: 'ประกอบกิจการท่องเที่ยว', href: '/under-construction' },
-          { label: 'อ.ย.', href: '/under-construction' },
-          { label: 'วีซ่าและใบอนุญาตทำงาน', href: '/under-construction' },
-        ],
-      },
-      {
-        label: 'การตลาดออนไลน์',
-        href: '/under-construction',
-        subItems: [
-          { label: 'ทำเว็บไซต์', href: '/under-construction' },
-          { label: 'FaceBook Page', href: '/under-construction' },
-          { label: 'Line OA', href: '/under-construction' },
-          { label: 'TikTok', href: '/under-construction' },
-          { label: 'YouTube', href: '/under-construction' },
-          { label: 'Video Production', href: '/under-construction' },
-          { label: 'ยิงแอด', href: '/under-construction' },
-          { label: 'ระบบ Ai', href: '/under-construction' },
-          { label: 'Odoo ERP', href: '/under-construction' },
-          { label: 'เขียนโปรแกรมต่างๆ', href: '/under-construction' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'ดาวน์โหลดเอกสาร',
-    href: '/under-construction',
-  },
-  {
-    label: 'ติดต่อเรา',
-    href: '/under-construction',
-  },
-]
 
 export default function MobileMenu({
   isOpen,
@@ -105,6 +19,99 @@ export default function MobileMenu({
   isOpen: boolean
   onClose: () => void
 }) {
+  const t = useTranslations()
+
+  const mainMenu = useMemo<MenuItem[]>(
+    () => [
+      {
+        label: t('mobileMenu.promotion'),
+        href: '/promotion',
+      },
+      {
+        label: t('mobileMenu.services'),
+        href: '/under-construction',
+      subItems: [
+        {
+          label: t('megaMenu.registration.title'),
+          href: '/under-construction',
+          subItems: [
+            { label: t('megaMenu.registration.items.limitedCompany'), href: '/under-construction' },
+            { label: t('megaMenu.registration.items.limitedPartnership'), href: '/under-construction' },
+            { label: t('megaMenu.registration.items.foundation'), href: '/under-construction' },
+            { label: t('megaMenu.registration.items.association'), href: '/under-construction' },
+            { label: t('megaMenu.registration.items.commercialRegistration'), href: '/under-construction' },
+            { label: t('megaMenu.registration.items.employerRegistration'), href: '/under-construction' },
+            { label: t('megaMenu.registration.items.vat'), href: '/under-construction' },
+          ],
+        },
+        {
+          label: t('megaMenu.corporateChanges.title'),
+          href: '/under-construction',
+          subItems: [
+            { label: t('megaMenu.corporateChanges.items.name'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.seal'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.directorInfo'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.signAuthority'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.shareholders'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.shareRatio'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.capitalChange'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.relocation'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.objective'), href: '/under-construction' },
+            { label: t('megaMenu.corporateChanges.items.dissolution'), href: '/under-construction' },
+          ],
+        },
+        {
+          label: t('megaMenu.accountingAudit.title'),
+          href: '/under-construction',
+          subItems: [
+            { label: t('megaMenu.accountingAudit.items.corporateAccounting'), href: '/under-construction' },
+            { label: t('megaMenu.accountingAudit.items.monthlyTax'), href: '/under-construction' },
+            { label: t('megaMenu.accountingAudit.items.annualFinancial'), href: '/under-construction' },
+            { label: t('megaMenu.accountingAudit.items.personalAccounting'), href: '/under-construction' },
+            { label: t('megaMenu.accountingAudit.items.audit'), href: '/under-construction' },
+            { label: t('megaMenu.accountingAudit.items.taxPlanning'), href: '/under-construction' },
+            { label: t('megaMenu.accountingAudit.items.foreignerTaxId'), href: '/under-construction' },
+          ],
+        },
+        {
+          label: t('megaMenu.license.title'),
+          href: '/under-construction',
+          subItems: [
+            { label: t('megaMenu.license.items.tourism'), href: '/under-construction' },
+            { label: t('megaMenu.license.items.fda'), href: '/under-construction' },
+            { label: t('megaMenu.license.items.visaWorkPermit'), href: '/under-construction' },
+          ],
+        },
+        {
+          label: t('megaMenu.onlineMarketing.title'),
+          href: '/under-construction',
+          subItems: [
+            { label: t('megaMenu.onlineMarketing.items.website'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.facebookPage'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.lineOA'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.tiktok'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.youtube'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.videoProduction'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.ads'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.aiSystems'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.odooERP'), href: '/under-construction' },
+            { label: t('megaMenu.onlineMarketing.items.softwareDevelopment'), href: '/under-construction' },
+          ],
+        },
+      ],
+    },
+    {
+      label: t('mobileMenu.download'),
+      href: '/under-construction',
+    },
+    {
+      label: t('mobileMenu.contact'),
+      href: '/under-construction',
+    },
+  ],
+    [t]
+  )
+
   const [stack, setStack] = useState<{ title: string; items: MenuItem[] }[]>([
     { title: 'ViRINTIRA', items: mainMenu },
   ])
@@ -124,7 +131,7 @@ export default function MobileMenu({
     if (!isOpen) {
       setStack([{ title: 'ViRINTIRA', items: mainMenu }])
     }
-  }, [isOpen])
+  }, [isOpen, mainMenu])
 
   useEffect(() => {
     onClose()
