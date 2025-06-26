@@ -36,5 +36,69 @@
   "underConstruction": {
     "heading": "The content for {section} / {item} is under development",
     "message": "Please come back again soon"
+  },
+  "megaMenu": {
+    "registration": {
+      "title": "Registration",
+      "items": {
+        "limitedCompany": "Limited Company",
+        "limitedPartnership": "Limited Partnership",
+        "foundation": "Foundation",
+        "association": "Association",
+        "commercialRegistration": "Commercial Registration",
+        "employerRegistration": "Employer Registration",
+        "vat": "Value Added Tax (VAT)"
+      }
+    },
+    "corporateChanges": {
+      "title": "Corporate Information Updates",
+      "items": {
+        "name": "Company Name",
+        "seal": "Company Seal",
+        "directorInfo": "Director Information",
+        "signAuthority": "Signing Authority",
+        "shareholders": "Shareholders",
+        "shareRatio": "Share Ratio",
+        "capitalChange": "Increase/Decrease Capital",
+        "relocation": "Relocation",
+        "objective": "Objectives",
+        "dissolution": "Dissolution"
+      }
+    },
+    "accountingAudit": {
+      "title": "Accounting and Audit",
+      "items": {
+        "corporateAccounting": "Corporate Accounting",
+        "monthlyTax": "Monthly Tax",
+        "annualFinancial": "Annual Statements",
+        "personalAccounting": "Personal Accounting",
+        "audit": "Audit",
+        "taxPlanning": "Tax Planning",
+        "foreignerTaxId": "Tax ID for Foreigners"
+      }
+    },
+    "license": {
+      "title": "License Applications",
+      "items": {
+        "tourism": "Tourism Business License",
+        "fda": "FDA",
+        "visaWorkPermit": "Visa & Work Permit"
+      }
+    },
+    "onlineMarketing": {
+      "title": "Online Marketing",
+      "items": {
+        "website": "Website Development",
+        "facebookPage": "Facebook Page",
+        "lineOA": "Line OA",
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "videoProduction": "Video Production",
+        "ads": "Advertising",
+        "aiSystems": "AI Systems",
+        "odooERP": "Odoo ERP",
+        "softwareDevelopment": "Custom Software Development"
+      }
+    }
   }
 }
