@@ -106,6 +106,10 @@
     "step3": {
       "title": "Deliver",
       "description": "Deliver results and provide ongoing consultation"
+    },
+    "step4": {
+      "title": "Smooth Completion",
+      "description": "Deliver on time and accurately with additional guidance"
     }
   }
-} 
+}
