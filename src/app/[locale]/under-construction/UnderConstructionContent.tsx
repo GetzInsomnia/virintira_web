@@ -5,6 +5,7 @@ import ContactCTA from '@/components/ContactCTA'
 import BorderRevealButton from '@/components/BorderRevealButton'
 import { motion } from 'framer-motion'
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)
@@ -20,9 +21,10 @@ function useIsMobile() {
 }
 
 export default function UnderConstructionContent() {
-  const searchParams = useSearchParams();
-  const section = searchParams.get('section') || 'หมวดหมู่ไม่ระบุ';
-  const item = searchParams.get('item') || 'หัวข้อไม่ระบุ';
+  const t = useTranslations()
+  const searchParams = useSearchParams()
+  const section = searchParams.get('section') || 'หมวดหมู่ไม่ระบุ'
+  const item = searchParams.get('item') || 'หัวข้อไม่ระบุ'
 
   const [ctaExpanded, setCtaExpanded] = useState(false)
   const isMobile = useIsMobile()
@@ -35,12 +37,12 @@ export default function UnderConstructionContent() {
 
         {/* หัวข้อ */}
         <h1 className="text-2xl sm:text-3xl font-bold text-[#A70909] mb-4 leading-relaxed">
-          ข้อมูลในหน้า <span className="underline">{section}</span> / <span className="underline">{item}</span> อยู่ระหว่างการพัฒนา
+          {t('underConstruction.heading', { section, item })}
         </h1>
 
         {/* คำอธิบาย */}
         <p className="text-black text-lg sm:text-xl mb-10 leading-relaxed">
-          กรุณากลับมาใหม่เร็ว ๆ นี้
+          {t('underConstruction.message')}
         </p>
 
         {/* CTA + ปุ่มกลับ */}
@@ -52,7 +54,7 @@ export default function UnderConstructionContent() {
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
           >
             <BorderRevealButton href="/" className="text-xs py-1 px-3">
-              กลับไปหน้าแรก
+              {t('buttons.backHome')}
             </BorderRevealButton>
           </motion.div>
         </div>
