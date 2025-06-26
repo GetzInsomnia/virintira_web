@@ -11,6 +11,8 @@ import Footer from '@/components/Footer';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 const fontTH = localFont({
   variable: '--font-th',
   src: [
