@@ -2,33 +2,31 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaRegEdit, FaComments, FaFileAlt, FaSmile } from 'react-icons/fa'
+import { FaRegEdit, FaComments, FaFileAlt } from 'react-icons/fa'
 import ContactCTA from '@/components/ContactCTA'
+import { useTranslations } from 'next-intl'
 
-const steps = [
-  {
-    icon: <FaRegEdit className="text-4xl text-[#A70909]" />, 
-    title: 'เลือกบริการ',
-    description: 'เลือกบริการที่คุณสนใจหรือต้องการขอคำปรึกษา'
-  },
-  {
-    icon: <FaComments className="text-4xl text-[#A70909]" />,
-    title: 'พูดคุยและวางแผน',
-    description: 'ติดต่อเราเพื่อปรึกษารายละเอียดหรือใช้บริการ'
-  },
-  {
-    icon: <FaFileAlt className="text-4xl text-[#A70909]" />,
-    title: 'ดำเนินการและเตรียมเอกสาร',
-    description: 'เราดูแลทุกขั้นตอน พร้อมอัปเดตให้คุณทราบทุกระยะ'
-  },
-  {
-    icon: <FaSmile className="text-4xl text-[#A70909]" />,
-    title: 'เสร็จสิ้นอย่างราบรื่น',
-    description: 'ส่งงานตรงเวลา ถูกต้อง พร้อมให้คำแนะนำเพิ่มเติม'
-  },
-]
+
 
 export default function HowItWorksSection() {
+  const t = useTranslations()
+  const steps = [
+    {
+      icon: <FaRegEdit className="text-4xl text-[#A70909]" />,
+      title: t('howItWorks.step1.title'),
+      description: t('howItWorks.step1.description')
+    },
+    {
+      icon: <FaComments className="text-4xl text-[#A70909]" />,
+      title: t('howItWorks.step2.title'),
+      description: t('howItWorks.step2.description')
+    },
+    {
+      icon: <FaFileAlt className="text-4xl text-[#A70909]" />,
+      title: t('howItWorks.step3.title'),
+      description: t('howItWorks.step3.description')
+    }
+  ]
   const [highlightIndex, setHighlightIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
   const [hasStartedHighlight, setHasStartedHighlight] = useState(false)
@@ -56,7 +54,7 @@ export default function HowItWorksSection() {
     }, 2000)
 
     return () => clearInterval(timer)
-  }, [hasStartedHighlight])
+  }, [hasStartedHighlight, steps.length])
 
   return (
     <section
@@ -64,7 +62,7 @@ export default function HowItWorksSection() {
       style={{ minHeight: 'calc(100dvh - var(--header-height))' }}
     >
       <div className="max-w-6xl mx-auto w-full flex flex-col justify-center">
-        <h2 className="text-center text-2xl lg:text-4xl font-bold text-[#A70909] mb-16">ขั้นตอนการใช้บริการ</h2>
+        <h2 className="text-center text-2xl lg:text-4xl font-bold text-[#A70909] mb-16">{t('howItWorks.title')}</h2>
 
         <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-8">
           {steps.map((step, index) => (
