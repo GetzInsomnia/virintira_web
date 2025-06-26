@@ -1,10 +1,14 @@
 import BorderRevealButton from '@/components/BorderRevealButton'
 import type { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-  title: 'ไม่พบหน้าที่คุณต้องการ | VIRINTIRA',
-  description: 'ขออภัย ไม่พบหน้าเว็บที่คุณพยายามเข้าถึง',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations()
+  return {
+    title: `${t('notFound.heading')} | VIRINTIRA`,
+    description: t('notFound.message'),
+  }
 }
 
 export default function NotFound() {
