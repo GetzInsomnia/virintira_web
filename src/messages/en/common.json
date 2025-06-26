@@ -35,7 +35,9 @@
   },
   "underConstruction": {
     "heading": "The content for {section} / {item} is under development",
-    "message": "Please come back again soon"
+    "message": "Please come back again soon",
+    "unknownSection": "Unknown section",
+    "unknownItem": "Unknown item"
   },
   "megaMenu": {
     "registration": {

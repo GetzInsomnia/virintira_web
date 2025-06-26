@@ -35,7 +35,9 @@
   },
   "underConstruction": {
     "heading": "ข้อมูลในหน้า {section} / {item} อยู่ระหว่างการพัฒนา",
-    "message": "กรุณากลับมาใหม่เร็ว ๆ นี้"
+    "message": "กรุณากลับมาใหม่เร็ว ๆ นี้",
+    "unknownSection": "หมวดหมู่ไม่ระบุ",
+    "unknownItem": "หัวข้อไม่ระบุ"
   },
   "megaMenu": {
     "registration": {
