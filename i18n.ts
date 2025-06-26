@@ -15,4 +15,4 @@ export const localeInfo = {
   ja: { name: '日本語', flag: '/flags/ja.png', dir: 'ltr' },
   ar: { name: 'العربية', flag: '/flags/ar.png', dir: 'rtl' },
   hi: { name: 'हिन्दी', flag: '/flags/hi.png', dir: 'ltr' },
-} as const; 
+} as const;
