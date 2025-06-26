@@ -1,4 +1,5 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { locales, Locale } from '../../../i18n';
@@ -40,13 +41,10 @@ const fontEN = localFont({
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale });
   return {
-    title: locale === 'th' 
-      ? 'สำนักงานบัญชี VIRINTIRA | สำนักงานบัญชีและบริหารธุรกิจครบวงจร'
-      : 'VIRINTIRA Accounting Office | Complete Accounting and Business Management Services',
-    description: locale === 'th'
-      ? 'ให้บริการบัญชี ภาษี จดทะเบียนธุรกิจ และการตลาดออนไลน์'
-      : 'Professional accounting, tax, business registration, and online marketing services',
+    title: t('meta.title'),
+    description: t('meta.description'),
     keywords: [
       'สำนักงานบัญชี',
       'บริการบัญชี',

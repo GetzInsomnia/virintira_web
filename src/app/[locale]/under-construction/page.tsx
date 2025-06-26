@@ -1,10 +1,15 @@
 import type { Metadata } from 'next'
 import UnderConstructionContent from './UnderConstructionContent'
+import { getTranslations } from 'next-intl/server'
 
-export const generateMetadata = (): Metadata => ({
-  title: 'หน้ากำลังพัฒนา',
-  alternates: { canonical: 'https://virintira.com/under-construction' },
-})
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations()
+  return {
+    title: t('underConstruction.title'),
+    description: t('underConstruction.message'),
+    alternates: { canonical: 'https://virintira.com/under-construction' },
+  }
+}
 
 export default async function UnderConstructionPage({ 
   params 
