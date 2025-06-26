@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import { Link, usePathname } from '../../../i18n/navigation'
+import { Link, usePathname, useRouter } from '../../../i18n/navigation'
 import { useSearchParams } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { locales, localeInfo } from '../../../i18n'
@@ -14,6 +14,7 @@ export default function LanguageSwitcher() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const locale = useLocale()
+  const router = useRouter()
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev)
 
@@ -52,7 +53,10 @@ export default function LanguageSwitcher() {
                 className={`w-full px-2 py-1 text-center hover:bg-gray-100 block ${
                   locale === lang ? 'bg-[#A70909] text-white' : ''
                 }`}
-                onClick={() => setDropdownOpen(false)}
+                onClick={() => {
+                  setDropdownOpen(false)
+                  router.refresh()
+                }}
               >
                 {lang.toUpperCase()}
               </Link>
@@ -71,6 +75,7 @@ export default function LanguageSwitcher() {
             className={`flex items-center space-x-1 hover:opacity-80 transition-opacity ${
               locale === lang ? 'opacity-100' : 'opacity-50'
             }`}
+            onClick={() => router.refresh()}
           >
             <Image
               src={localeInfo[lang as keyof typeof localeInfo]?.flag || `/flags/${lang}.png`}
