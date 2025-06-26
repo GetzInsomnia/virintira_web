@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { FaLine, FaTiktok, FaFacebookF, FaPhoneAlt, FaEnvelope, FaChevronLeft } from 'react-icons/fa'
+import { useTranslations } from 'next-intl'
 
 export default function SocialFloating({ menuOpen = false }: { menuOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
   const [isClient, setIsClient] = useState(false)
+  const t = useTranslations()
 
   useEffect(() => {
     setIsClient(true)
@@ -64,13 +66,15 @@ export default function SocialFloating({ menuOpen = false }: { menuOpen?: boolea
 
         >
           <div className="flex flex-col items-center space-y-0.5 lg:space-y-1.5">
-            {"contact".split('').map((c, i) => (
-              <span key={`c-${i}`}>{c}</span>
-            ))}
-            <div className="h-2" />
-            {"us".split('').map((c, i) => (
-              <span key={`u-${i}`}>{c}</span>
-            ))}
+            {t('buttons.contactUs')
+              .split('')
+              .map((char, i) =>
+                char === ' ' ? (
+                  <div className="h-2" key={`space-${i}`} />
+                ) : (
+                  <span key={`c-${i}`}>{char}</span>
+                ),
+              )}
             <div className="mt-1 text-xs lg:text-sm">
               <FaChevronLeft />
             </div>
