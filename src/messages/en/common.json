@@ -31,6 +31,9 @@
     "call": "Call 092-882-5556",
     "chat": "Chat now!"
   },
+  "search": {
+    "placeholder": "Search..."
+  },
   "meta": {
     "title": "VIRINTIRA Accounting Office | Complete Accounting and Business Management Services",
     "description": "Professional accounting, tax, business registration, and online marketing services"
