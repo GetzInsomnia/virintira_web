@@ -31,7 +31,8 @@ export default function LanguageSwitcher() {
     }
   }, [])
 
-  const pathWithoutLocale = pathname.replace(/^\/(th|en)/, '') || '/'
+  const localeRegex = new RegExp(`^/(${locales.join('|')})`)
+  const pathWithoutLocale = pathname.replace(localeRegex, '') || '/'
   const query = searchParams.toString()
   const href = `${pathWithoutLocale}${query ? `?${query}` : ''}`
 
