@@ -1,6 +1,6 @@
 import { createNavigation } from 'next-intl/navigation';
-import { locales } from '../i18n';
+import { locales, defaultLocale } from '../i18n';
 
 export const { Link, usePathname, useRouter } =
-  createNavigation({ locales, localePrefix: 'as-needed' });
+  createNavigation({ locales, defaultLocale, localePrefix: 'as-needed' });
 
