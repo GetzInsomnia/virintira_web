@@ -1,73 +1,76 @@
 'use client'
 
 import CustomLink from '@/components/CustomLink'
-
-const sections = [
-  {
-    title: 'จดทะเบียน',
-    items: [
-      { label: 'บริษัทจำกัด', href: '/under-construction' },
-      { label: 'ห้างหุ้นส่วนจำกัด', href: '/under-construction' },
-      { label: 'มูลนิธิ', href: '/under-construction' },
-      { label: 'สมาคม', href: '/under-construction' },
-      { label: 'ทะเบียนพาณิชย์ร้านค้า', href: '/under-construction' },
-      { label: 'ขึ้นทะเบียนนายจ้าง', href: '/under-construction' },
-      { label: 'ภาษีมูลค่าเพิ่ม', href: '/under-construction' },
-    ],
-  },
-  {
-    title: 'แก้ไขข้อมูลนิติบุคคล',
-    items: [
-      { label: 'ชื่อนิติบุคคล', href: '/under-construction' },
-      { label: 'ตรายาง', href: '/under-construction' },
-      { label: 'ข้อมูลกรรมการ', href: '/under-construction' },
-      { label: 'อำนาจลงนาม', href: '/under-construction' },
-      { label: 'ผู้ถือหุ้น', href: '/under-construction' },
-      { label: 'สัดส่วนหุ้น', href: '/under-construction' },
-      { label: 'เพิ่ม/ลดทุน', href: '/under-construction' },
-      { label: 'ย้ายที่ตั้ง', href: '/under-construction' },
-      { label: 'วัตถุประสงค์', href: '/under-construction' },
-      { label: 'เลิกกิจการ', href: '/under-construction' },
-    ],
-  },
-  {
-    title: 'บัญชีและตรวจสอบ',
-    items: [
-      { label: 'บัญชีนิติบุคคล', href: '/under-construction' },
-      { label: 'ภาษีรายเดือน', href: '/under-construction' },
-      { label: 'งบประจำปี', href: '/under-construction' },
-      { label: 'บัญชีบุคคลธรรมดา', href: '/under-construction' },
-      { label: 'ตรวจสอบบัญชี', href: '/under-construction' },
-      { label: 'วางแผนภาษี', href: '/under-construction' },
-      { label: 'ขอเลขผู้เสียภาษีชาวต่างชาติ', href: '/under-construction' },
-    ],
-  },
-  {
-    title: 'ขอใบอนุญาต',
-    items: [
-      { label: 'ประกอบกิจการท่องเที่ยว', href: '/under-construction' },
-      { label: 'อ.ย.', href: '/under-construction' },
-      { label: 'วีซ่าและใบอนุญาตทำงาน', href: '/under-construction' },
-    ],
-  },
-  {
-    title: 'การตลาดออนไลน์',
-    items: [
-      { label: 'ทำเว็บไซต์', href: '/under-construction' },
-      { label: 'FaceBook Page', href: '/under-construction' },
-      { label: 'Line OA', href: '/under-construction' },
-      { label: 'TikTok', href: '/under-construction' },
-      { label: 'YouTube', href: '/under-construction' },
-      { label: 'Video Production', href: '/under-construction' },
-      { label: 'ยิงแอด', href: '/under-construction' },
-      { label: 'ระบบ Ai', href: '/under-construction' },
-      { label: 'Odoo ERP', href: '/under-construction' },
-      { label: 'เขียนโปรแกรมต่างๆ', href: '/under-construction' },
-    ],
-  },
-]
+import { useTranslations } from 'next-intl'
 
 export default function MegaMenu() {
+  const t = useTranslations()
+
+  const sections = [
+    {
+      title: t('megaMenu.registration.title'),
+      items: [
+        { label: t('megaMenu.registration.items.limitedCompany'), href: '/under-construction' },
+        { label: t('megaMenu.registration.items.limitedPartnership'), href: '/under-construction' },
+        { label: t('megaMenu.registration.items.foundation'), href: '/under-construction' },
+        { label: t('megaMenu.registration.items.association'), href: '/under-construction' },
+        { label: t('megaMenu.registration.items.commercialRegistration'), href: '/under-construction' },
+        { label: t('megaMenu.registration.items.employerRegistration'), href: '/under-construction' },
+        { label: t('megaMenu.registration.items.vat'), href: '/under-construction' },
+      ],
+    },
+    {
+      title: t('megaMenu.corporateChanges.title'),
+      items: [
+        { label: t('megaMenu.corporateChanges.items.name'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.seal'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.directorInfo'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.signAuthority'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.shareholders'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.shareRatio'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.capitalChange'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.relocation'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.objective'), href: '/under-construction' },
+        { label: t('megaMenu.corporateChanges.items.dissolution'), href: '/under-construction' },
+      ],
+    },
+    {
+      title: t('megaMenu.accountingAudit.title'),
+      items: [
+        { label: t('megaMenu.accountingAudit.items.corporateAccounting'), href: '/under-construction' },
+        { label: t('megaMenu.accountingAudit.items.monthlyTax'), href: '/under-construction' },
+        { label: t('megaMenu.accountingAudit.items.annualFinancial'), href: '/under-construction' },
+        { label: t('megaMenu.accountingAudit.items.personalAccounting'), href: '/under-construction' },
+        { label: t('megaMenu.accountingAudit.items.audit'), href: '/under-construction' },
+        { label: t('megaMenu.accountingAudit.items.taxPlanning'), href: '/under-construction' },
+        { label: t('megaMenu.accountingAudit.items.foreignerTaxId'), href: '/under-construction' },
+      ],
+    },
+    {
+      title: t('megaMenu.license.title'),
+      items: [
+        { label: t('megaMenu.license.items.tourism'), href: '/under-construction' },
+        { label: t('megaMenu.license.items.fda'), href: '/under-construction' },
+        { label: t('megaMenu.license.items.visaWorkPermit'), href: '/under-construction' },
+      ],
+    },
+    {
+      title: t('megaMenu.onlineMarketing.title'),
+      items: [
+        { label: t('megaMenu.onlineMarketing.items.website'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.facebookPage'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.lineOA'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.tiktok'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.youtube'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.videoProduction'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.ads'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.aiSystems'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.odooERP'), href: '/under-construction' },
+        { label: t('megaMenu.onlineMarketing.items.softwareDevelopment'), href: '/under-construction' },
+      ],
+    },
+]
+
   return (
     <>
       {sections.map((section) => (
