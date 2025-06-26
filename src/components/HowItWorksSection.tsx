@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaRegEdit, FaComments, FaFileAlt } from 'react-icons/fa'
+import { FaRegEdit, FaComments, FaFileAlt, FaSmile } from 'react-icons/fa'
 import ContactCTA from '@/components/ContactCTA'
 import { useTranslations } from 'next-intl'
 
@@ -25,6 +25,11 @@ export default function HowItWorksSection() {
       icon: <FaFileAlt className="text-4xl text-[#A70909]" />,
       title: t('howItWorks.step3.title'),
       description: t('howItWorks.step3.description')
+    },
+    {
+      icon: <FaSmile className="text-4xl text-[#A70909]" />,
+      title: t('howItWorks.step4.title'),
+      description: t('howItWorks.step4.description')
     }
   ]
   const [highlightIndex, setHighlightIndex] = useState(0)
