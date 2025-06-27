@@ -1,6 +1,6 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { locales, Locale } from '../../../i18n';
 import '../globals.css';
@@ -11,6 +11,7 @@ import Footer from '@/components/Footer';
 import TranslationDebugger from '@/components/TranslationDebugger';
 import Script from 'next/script';
 import type { Metadata } from 'next';
+import LayoutDebugLogger from '@/components/LayoutDebugLogger';
 
 export const dynamic = 'force-dynamic';
 
@@ -79,18 +80,6 @@ function LocaleLayoutContent({
 }) {
   const messages = useMessages();
 
-  // Debug logging for layout
-  useEffect(() => {
-    console.log('🏗️ Layout Debug:', {
-      currentLocale: locale,
-      messagesKeys: Object.keys(messages),
-      messagesCount: Object.keys(messages).length,
-      hasHeroMessages: 'hero' in messages,
-      heroKeys: 'hero' in messages ? Object.keys(messages.hero) : [],
-      timestamp: new Date().toISOString()
-    })
-  }, [locale, messages])
-
   return (
     <html key={locale} lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
@@ -116,6 +105,7 @@ function LocaleLayoutContent({
           messages={messages} 
           key={locale}
         >
+          <LayoutDebugLogger />
           <Navbar />
           <main
             id="main"
