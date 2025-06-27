@@ -29,10 +29,15 @@ export default function LanguageSwitcher() {
     }
   }, [])
 
-  const changeLocale = (lang: string) => {
+  const changeLocale = async (lang: string) => {
     setDropdownOpen(false)
-    // ใช้ router.push โดยตรงกับ pathname ปัจจุบันและ locale ใหม่
-    router.push(pathname, { locale: lang })
+    
+    // Force a hard navigation to ensure fresh content
+    const currentPath = pathname
+    const newPath = `/${lang}${currentPath === '/' ? '' : currentPath}`
+    
+    // Use window.location for a complete page refresh
+    window.location.href = newPath
   }
 
   return (

@@ -20,6 +20,9 @@ export default getRequestConfig(async ({ locale }) => {
 
   return {
     locale: validLocale as string,
-    messages
+    messages,
+    // เพิ่ม timeZone และ now เพื่อป้องกัน caching
+    timeZone: 'Asia/Bangkok',
+    now: new Date()
   };
 }); 
