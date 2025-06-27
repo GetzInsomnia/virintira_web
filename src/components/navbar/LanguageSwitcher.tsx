@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import { usePathname, useRouter } from '../../../i18n/navigation'
+import { usePathname } from '../../../i18n/navigation'
 import { useLocale } from 'next-intl'
 import { locales, localeInfo } from '../../../i18n'
 
@@ -12,7 +12,6 @@ export default function LanguageSwitcher() {
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const pathname = usePathname()
   const locale = useLocale()
-  const router = useRouter()
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev)
 
