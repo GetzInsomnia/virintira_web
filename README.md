@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Inter and Prompt `.ttf` fonts are bundled under `public/fonts` and loaded via `next/font/local`.
+Inter and Prompt fonts are bundled under `public/fonts` and loaded via `next/font/local`.
 
 ## Learn More
 

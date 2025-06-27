@@ -3,28 +3,18 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import { usePathname, useRouter } from '../../../i18n/navigation'
-import { useLocale } from 'next-intl'
-import { locales, localeInfo } from '../../../i18n'
 
 export default function LanguageSwitcher() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [currentLang, setCurrentLang] = useState<'TH' | 'EN'>('TH')
   const dropdownRef = useRef<HTMLDivElement | null>(null)
-  const pathname = usePathname()
-  const locale = useLocale()
-  const router = useRouter()
-
-  // Debug logging for current state
-  useEffect(() => {
-    console.log('🔍 LanguageSwitcher Debug:', {
-      currentLocale: locale,
-      currentPathname: pathname,
-      availableLocales: locales,
-      timestamp: new Date().toISOString()
-    })
-  }, [locale, pathname])
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev)
+
+  const selectLang = (lang: 'TH' | 'EN') => {
+    setCurrentLang(lang)
+    setDropdownOpen(false)
+  }
 
   // ปิด dropdown เมื่อคลิกนอกเมนู
   useEffect(() => {
@@ -39,41 +29,6 @@ export default function LanguageSwitcher() {
     }
   }, [])
 
-  const changeLocale = async (lang: string) => {
-    console.log('🔄 Language Change Requested:', {
-      from: locale,
-      to: lang,
-      currentPath: pathname,
-      timestamp: new Date().toISOString()
-    })
-
-    setDropdownOpen(false)
-    
-    try {
-      console.log('📡 Attempting navigation with next-intl router...')
-      
-      // Use next-intl router for proper navigation
-      await router.replace(pathname, { locale: lang })
-      
-      console.log('✅ Navigation successful:', {
-        newLocale: lang,
-        pathname: pathname,
-        timestamp: new Date().toISOString()
-      })
-    } catch (error) {
-      console.error('❌ Navigation failed:', {
-        error: error,
-        fallbackToManual: true,
-        timestamp: new Date().toISOString()
-      })
-      
-      // Fallback to manual navigation
-      const newPath = `/${lang}${pathname === '/' ? '' : pathname}`
-      console.log('🔄 Using fallback navigation to:', newPath)
-      window.location.href = newPath
-    }
-  }
-
   return (
     <div ref={dropdownRef} className="relative">
       {/* Mobile */}
@@ -83,40 +38,33 @@ export default function LanguageSwitcher() {
         </button>
         {dropdownOpen && (
           <div className="absolute -left-4.5 mt-4 bg-white border border-gray-300 rounded shadow-md py-1 text-sm w-14 z-50">
-            {locales.map((lang) => (
-              <button
-                key={lang}
-                onClick={() => changeLocale(lang)}
-                className={`w-full px-2 py-1 text-center hover:bg-gray-100 block ${
-                  locale === lang ? 'bg-[#A70909] text-white' : ''
-                }`}
-              >
-                {lang.toUpperCase()}
-              </button>
-            ))}
+            <button
+              onClick={() => selectLang('TH')}
+              className={`w-full px-2 py-1 text-center hover:bg-gray-100 ${currentLang === 'TH' ? 'bg-[#A70909] text-white' : ''}`}
+            >
+              TH
+            </button>
+            <button
+              onClick={() => selectLang('EN')}
+              className={`w-full px-2 py-1 text-center hover:bg-gray-100 ${currentLang === 'EN' ? 'bg-[#A70909] text-white' : ''}`}
+            >
+              EN
+            </button>
           </div>
         )}
       </div>
 
       {/* PC */}
       <div className="hidden lg:flex items-center space-x-2">
-        {locales.map((lang) => (
-          <button
-            key={lang}
-            onClick={() => changeLocale(lang)}
-            className={`flex items-center space-x-1 hover:opacity-80 transition-opacity ${
-              locale === lang ? 'opacity-100' : 'opacity-50'
-            }`}
-          >
-            <Image
-              src={localeInfo[lang as keyof typeof localeInfo]?.flag || `/flags/${lang}.png`}
-              alt={localeInfo[lang as keyof typeof localeInfo]?.name || lang.toUpperCase()}
-              width={24}
-              height={16}
-            />
-            <span className="text-sm text-black">{lang.toUpperCase()}</span>
-          </button>
-        ))}
+        <button onClick={() => selectLang('TH')} className={`flex items-center space-x-1 hover:opacity-80 ${currentLang === 'TH' ? 'opacity-100' : 'opacity-50'}`}>
+          <Image src="/flags/th.png" alt="Thai" width={24} height={16} />
+          <span className="text-sm text-black">TH</span>
+        </button>
+        <span className="text-gray-400">|</span>
+        <button onClick={() => selectLang('EN')} className={`flex items-center space-x-1 hover:opacity-80 ${currentLang === 'EN' ? 'opacity-100' : 'opacity-50'}`}>
+          <Image src="/flags/en.png" alt="English" width={24} height={16} />
+          <span className="text-sm text-black">EN</span>
+        </button>
       </div>
     </div>
   )

@@ -3,28 +3,8 @@
 import ContactCTA from '@/components/ContactCTA'
 import { motion } from 'framer-motion'
 import TypewriterText from '@/components/TypewriterText'
-import { useTranslations } from 'next-intl'
-import { useLocale } from 'next-intl'
-import { useEffect } from 'react'
 
 export default function HeroSection() {
-  const t = useTranslations()
-  const locale = useLocale()
-  
-  // Debug logging for translations
-  useEffect(() => {
-    console.log('🏠 HeroSection Debug:', {
-      currentLocale: locale,
-      heroTitle: t('hero.title'),
-      heroSubtitle: t('hero.subtitle'),
-      translationKeys: {
-        title: 'hero.title',
-        subtitle: 'hero.subtitle'
-      },
-      timestamp: new Date().toISOString()
-    })
-  }, [locale, t])
-  
   return (
     <section
       id="herosection"
@@ -34,11 +14,6 @@ export default function HeroSection() {
       {/* Background image */}
       <div className="absolute -top-[10px] inset-x-0 bottom-0 z-0 bg-[url('/bg-hero.webp')] bg-cover bg-center opacity-15"></div>
 
-      {/* Debug locale indicator */}
-      <div className="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 text-xs rounded z-10">
-        Locale: {locale}
-      </div>
-
       {/* Foreground content */}
       <div className="relative z-10 max-w-xl mx-auto space-y-6">
         <motion.h1
@@ -47,7 +22,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          {t('hero.title')}
+          สำนักงานบัญชีและบริหารธุรกิจครบวงจร
         </motion.h1>
 
         <motion.div
@@ -56,7 +31,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <TypewriterText text={t('hero.subtitle')} />
+          <TypewriterText text="บริการไว ใช้งานง่าย ครบจบทุกเรื่องธุรกิจ" />
         </motion.div>
 
         <motion.div

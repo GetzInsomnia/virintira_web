@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react'
 import ContactCTA from '@/components/ContactCTA'
 import BorderRevealButton from '@/components/BorderRevealButton'
 import { motion } from 'framer-motion'
-import { useSearchParams } from 'next/navigation'
-import { useTranslations } from 'next-intl'
-import { useLocale } from 'next-intl'
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)
@@ -22,28 +19,17 @@ function useIsMobile() {
 }
 
 export default function UnderConstructionContent() {
-  const t = useTranslations()
-  const locale = useLocale()
-  const searchParams = useSearchParams()
-  const section =
-    searchParams.get('section') || t('underConstruction.unknownSection')
-  const item = searchParams.get('item') || t('underConstruction.unknownItem')
+  const [section, setSection] = useState('หมวดหมู่ไม่ระบุ')
+  const [item, setItem] = useState('หัวข้อไม่ระบุ')
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setSection(params.get('section') || 'หมวดหมู่ไม่ระบุ')
+    setItem(params.get('item') || 'หัวข้อไม่ระบุ')
+  }, [])
 
   const [ctaExpanded, setCtaExpanded] = useState(false)
   const isMobile = useIsMobile()
-
-  useEffect(() => {
-    console.log('🚧 UnderConstruction Debug:', {
-      currentLocale: locale,
-      ucHeading: t('underConstruction.heading', { section, item }),
-      ucMessage: t('underConstruction.message'),
-      translationKeys: {
-        heading: 'underConstruction.heading',
-        message: 'underConstruction.message'
-      },
-      timestamp: new Date().toISOString()
-    });
-  }, [locale, t, section, item]);
 
   return (
     <div className="relative min-h-[100dvh] flex items-center justify-center text-center px-6 bg-white snap-start transition-all">
@@ -53,12 +39,12 @@ export default function UnderConstructionContent() {
 
         {/* หัวข้อ */}
         <h1 className="text-2xl sm:text-3xl font-bold text-[#A70909] mb-4 leading-relaxed">
-          {t('underConstruction.heading', { section, item })}
+          ข้อมูลในหน้า <span className="underline">{section}</span> / <span className="underline">{item}</span> อยู่ระหว่างการพัฒนา
         </h1>
 
         {/* คำอธิบาย */}
         <p className="text-black text-lg sm:text-xl mb-10 leading-relaxed">
-          {t('underConstruction.message')}
+          กรุณากลับมาใหม่เร็ว ๆ นี้
         </p>
 
         {/* CTA + ปุ่มกลับ */}
@@ -70,7 +56,7 @@ export default function UnderConstructionContent() {
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
           >
             <BorderRevealButton href="/" className="text-xs py-1 px-3">
-              {t('buttons.backHome')}
+              กลับไปหน้าแรก
             </BorderRevealButton>
           </motion.div>
         </div>

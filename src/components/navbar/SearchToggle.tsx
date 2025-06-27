@@ -2,14 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
-import { useTranslations } from 'next-intl'
 
 export default function SearchToggle() {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const inputRef = useRef<HTMLInputElement | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
-  const t = useTranslations()
 
   // ปิดเมื่อคลิกนอก
   useEffect(() => {
@@ -65,7 +63,7 @@ export default function SearchToggle() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={t('search.placeholder')}
+          placeholder="ค้นหา..."
           className="w-full bg-transparent outline-none text-sm text-black placeholder-gray-400"
         />
         <button onClick={handleSearch} className="absolute right-3 text-[#A70909]">
@@ -85,7 +83,7 @@ export default function SearchToggle() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={t('search.placeholder')}
+            placeholder="ค้นหา..."
             className="w-full bg-transparent outline-none text-sm text-black placeholder-gray-400"
           />
           <button onClick={handleSearch} className="text-[#A70909]">

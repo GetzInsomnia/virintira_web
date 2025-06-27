@@ -2,46 +2,44 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import CustomLink from '@/components/CustomLink'
+import Link from 'next/link'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 
 const services = [
   {
-    titleKey: 'popularServices.registration.title',
-    descKey: 'popularServices.registration.description',
+    title: 'จดทะเบียนบริษัท',
     slug: 'registration',
+    description: 'บริการจดทะเบียนบริษัท และหจก. แบบครบวงจร พร้อมให้คำปรึกษาโดยทีมงานมืออาชีพ',
     image: '/services/registration.webp',
   },
   {
-    titleKey: 'popularServices.editInfo.title',
-    descKey: 'popularServices.editInfo.description',
+    title: 'แก้ไขข้อมูลนิติบุคคล',
     slug: 'edit-info',
+    description: 'เปลี่ยนแปลงข้อมูลต่างๆ ของบริษัท',
     image: '/services/edit-info.webp',
   },
   {
-    titleKey: 'popularServices.accounting.title',
-    descKey: 'popularServices.accounting.description',
+    title: 'ทำบัญชีรายเดือน',
     slug: 'accounting',
+    description: 'ทำบัญชีและยื่นภาษีอย่างถูกต้อง',
     image: '/services/accounting.webp',
   },
   {
-    titleKey: 'popularServices.closeFinancial.title',
-    descKey: 'popularServices.closeFinancial.description',
+    title: 'ปิดงบการเงิน',
     slug: 'close-financial',
+    description: 'บริการปิดงบโดยผู้สอบบัญชีรับอนุญาต',
     image: '/services/close-financial.webp',
   },
   {
-    titleKey: 'popularServices.tax.title',
-    descKey: 'popularServices.tax.description',
+    title: 'วางแผนภาษี',
     slug: 'tax',
+    description: 'วางแผนภาษีให้ธุรกิจอย่างคุ้มค่า',
     image: '/services/tax.webp',
   },
 ]
 
 export default function PopularServices() {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
-  const t = useTranslations()
 
   return (
     <section
@@ -49,20 +47,15 @@ export default function PopularServices() {
       style={{ minHeight: 'calc(100dvh - var(--header-height))' }}
     >
       <div className="w-full max-w-7xl mx-auto">
-        <h2 className="text-2xl lg:text-4xl font-bold text-center text-[#A70909] mb-10">{t('popularServices.title')}</h2>
+        <h2 className="text-2xl lg:text-4xl font-bold text-center text-[#A70909] mb-10">บริการยอดนิยม</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[340px] sm:auto-rows-[280px] lg:auto-rows-[230px]">
           {services.map((service, index) => {
             const isBlurred = hoverIndex !== null && hoverIndex !== index
+            const href = `/under-construction?section=บริการยอดนิยม&item=${encodeURIComponent(service.title)}`
 
             return (
-              <CustomLink
-                href="/under-construction"
-                section={t('popularServices.title')}
-                item={t(service.titleKey)}
-                key={index}
-                className="contents"
-              >
+              <Link href={href} key={index} className="contents">
                 <motion.div
                   onMouseEnter={() => setHoverIndex(index)}
                   onMouseLeave={() => setHoverIndex(null)}
@@ -79,7 +72,7 @@ export default function PopularServices() {
                 >
                   <Image
                     src={service.image}
-                    alt={t(service.titleKey)}
+                    alt={service.title}
                     fill
                     sizes={index === 0 ? '(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw' : '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'}
                     priority={index < 2}
@@ -88,14 +81,14 @@ export default function PopularServices() {
 
                   <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 px-4 py-3 z-10">
                     <h3 className="text-lg font-semibold text-[#A70909] mb-1 group-hover:translate-y-[-2px] transition duration-300">
-                      {t(service.titleKey)}
+                      {service.title}
                     </h3>
                     <p className="text-base text-black/80 leading-relaxed line-clamp-3 group-hover:opacity-100 transition duration-300">
-                      {t(service.descKey)}
+                      {service.description}
                     </p>
                   </div>
                 </motion.div>
-              </CustomLink>
+              </Link>
             )
           })}
         </div>

@@ -1,10 +1,9 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import Image from 'next/image'
 import ContactCTA from '@/components/ContactCTA'
-import { useTranslations } from 'next-intl'
 
 interface PromotionSectionProps {
     imagePosition?: 'left' | 'right'
@@ -22,12 +21,6 @@ export default function PromotionSection({
     const [isOpen, setIsOpen] = useState(false)
     const headingRef = useRef(null)
     const isInView = useInView(headingRef, { once: true })
-    const [animated, setAnimated] = useState(false)
-    const t = useTranslations()
-
-    useEffect(() => {
-      if (isInView && !animated) setAnimated(true)
-    }, [isInView, animated])
 
     const isImageLeft = imagePosition === 'left'
 
@@ -73,11 +66,12 @@ export default function PromotionSection({
                             transition={{ duration: 0.8 }}
                         >
                             <motion.span
-                                whileInView={{ scale: [1, 1.1, 1] }}
-                                viewport={{ once: true }}
+                                animate={isInView ? { scale: [1, 1.1, 1] } : {}}
                                 transition={{
                                     duration: 1.0,
+                                    repeat: Infinity,
                                     ease: 'easeInOut',
+                                    repeatDelay: 1.5,
                                 }}
                                 className="inline-block w-full text-center lg:text-left"
                             >
@@ -94,7 +88,7 @@ export default function PromotionSection({
                             ))}
                         </ul>
 
-                        <p className="mt-6 text-sm text-gray-500">{t('promo.terms')}</p>
+                        <p className="mt-6 text-sm text-gray-500">*เงื่อนไขเป็นไปตามที่บริษัทกำหนด</p>
 
                         <div className="pt-8 flex justify-center lg:justify-start">
                             <motion.div

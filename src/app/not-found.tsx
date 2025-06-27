@@ -1,30 +1,24 @@
 import BorderRevealButton from '@/components/BorderRevealButton'
 import type { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations()
-  return {
-    title: `${t('notFound.heading')} | VIRINTIRA`,
-    description: t('notFound.message'),
-  }
+export const metadata: Metadata = {
+  title: 'ไม่พบหน้าที่คุณต้องการ | VIRINTIRA',
+  description: 'ขออภัย ไม่พบหน้าเว็บที่คุณพยายามเข้าถึง',
 }
 
 export default function NotFound() {
-  const t = useTranslations()
   return (
     <div className="relative min-h-[100dvh] flex items-center justify-center text-center px-6 bg-white">
       <div className="max-w-xl flex flex-col items-center">
         <div className="text-[80px] sm:text-[100px] leading-none mb-6">😢</div>
         <h1 className="text-2xl sm:text-3xl font-bold text-[#A70909] mb-4 leading-relaxed">
-          {t('notFound.heading')}
+          ไม่พบหน้าที่คุณต้องการ
         </h1>
         <p className="text-black text-lg sm:text-xl mb-10 leading-relaxed">
-          {t('notFound.message')}
+          ลิงก์อาจไม่ถูกต้อง หรือเนื้อหาอาจถูกย้ายไปแล้ว
         </p>
         <BorderRevealButton href="/" className="text-xs py-1 px-3">
-          {t('buttons.backHome')}
+          กลับไปหน้าแรก
         </BorderRevealButton>
       </div>
     </div>

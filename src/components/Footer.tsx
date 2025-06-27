@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   FaPhoneAlt,
@@ -9,15 +10,11 @@ import {
   FaFacebookF,
   FaEnvelope,
 } from 'react-icons/fa'
-import CustomLink from '@/components/CustomLink'
-import { useTranslations } from 'next-intl'
 
 export default function Footer() {
   const pathname = usePathname()
-  const t = useTranslations()
   const handleLogoClick = () => {
-    if (pathname === '/' || pathname === '/th' || pathname === '/en') {
-      // ถ้าอยู่หน้าแรก ให้ smooth scroll ไป hero section
+    if (pathname === '/') {
       const target = document.getElementById('herosection')
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' })
@@ -25,9 +22,7 @@ export default function Footer() {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } else {
-      // ถ้าอยู่หน้าอื่น ให้ไปหน้าแรก
-      const currentLocale = pathname.split('/')[1] || 'th'
-      window.location.href = `/${currentLocale}`
+      window.location.href = '/?scrollToHero=true'
     }
   }
 
@@ -46,9 +41,9 @@ export default function Footer() {
 
         {/* ที่อยู่บริษัท */}
         <div className="flex flex-col justify-center h-full text-left max-w-md px-2">
-          <CustomLink href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap" section="Footer" item={t('companyName')}>
-            {t('companyName')}
-          </CustomLink>
+          <Link href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap">
+            บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)
+          </Link>
           <div className="space-y-1">
             <p>Tax ID: 0105568020174</p>
             <p>222/172 ถนนสามวา แขวงบางชัน</p>
@@ -63,20 +58,20 @@ export default function Footer() {
           <div className="flex gap-6">
             {/* ฝั่งซ้าย */}
             <div className="flex flex-col gap-2">
-              <CustomLink href="/promotion" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.promotion')}>{t('nav.promotion')}</CustomLink>
-              <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.download')}>{t('nav.download')}</CustomLink>
-              <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.contact')}>{t('nav.contact')}</CustomLink>
+              <Link href="/promotion" className="hover:underline text-[#A70909] font-medium">โปรโมชั่น</Link>
+              <Link href="/under-construction" className="hover:underline text-[#A70909] font-medium">ดาวน์โหลดเอกสาร</Link>
+              <Link href="/under-construction" className="hover:underline text-[#A70909] font-medium">ติดต่อเรา</Link>
             </div>
 
             {/* ฝั่งขวา */}
             <div className="flex flex-col gap-1">
-              <span className="text-[#A70909] font-medium">{t('footer.services')}</span>
+              <span className="text-[#A70909] font-medium">บริการ</span>
               <div className="ml-3 mt-1 space-y-1 text-sm">
-                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.registration.title')}>{t('popularServices.registration.title')}</CustomLink>
-                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.editInfo.title')}>{t('popularServices.editInfo.title')}</CustomLink>
-                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('services.audit.title')}>{t('services.audit.title')}</CustomLink>
-                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.license.title')}>{t('popularServices.license.title')}</CustomLink>
-                <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('services.marketing.title')}>{t('services.marketing.title')}</CustomLink>
+                <Link href="/under-construction" className="text-[#A70909] block hover:underline">จดทะเบียน</Link>
+                <Link href="/under-construction" className="text-[#A70909] block hover:underline">แก้ไขข้อมูลนิติบุคคล</Link>
+                <Link href="/under-construction" className="text-[#A70909] block hover:underline">บัญชีและตรวจสอบ</Link>
+                <Link href="/under-construction" className="text-[#A70909] block hover:underline">ขอใบอนุญาต</Link>
+                <Link href="/under-construction" className="text-[#A70909] block hover:underline">การตลาดออนไลน์</Link>
               </div>
             </div>
           </div>
@@ -117,9 +112,9 @@ export default function Footer() {
             <span className="mt-2 font-bold text-[#A70909] text-2xl">ViRINTIRA</span>
           </div>
           <div className="text-left px-2">
-            <CustomLink href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap" section="Footer" item={t('companyName')}>
-              {t('companyName')}
-            </CustomLink>
+            <Link href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap">
+              บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)
+            </Link>
             <div className="space-y-1">
               <p>Tax ID: 0105568020174</p>
               <p>222/172 ถนนสามวา แขวงบางชัน</p>
@@ -133,18 +128,18 @@ export default function Footer() {
         {/* เมนูลิงก์ */}
         <div className="flex justify-center gap-10 px-2">
           <div className="flex flex-col gap-2">
-            <CustomLink href="/promotion" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.promotion')}>{t('nav.promotion')}</CustomLink>
-            <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.download')}>{t('nav.download')}</CustomLink>
-            <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.contact')}>{t('nav.contact')}</CustomLink>
+            <Link href="/promotion" className="hover:underline text-[#A70909] font-medium">โปรโมชั่น</Link>
+            <Link href="/under-construction" className="hover:underline text-[#A70909] font-medium">ดาวน์โหลดเอกสาร</Link>
+            <Link href="/under-construction" className="hover:underline text-[#A70909] font-medium">ติดต่อเรา</Link>
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-[#A70909] font-medium">{t('footer.services')}</span>
+            <span className="text-[#A70909] font-medium">บริการ</span>
             <div className="ml-3 mt-1 space-y-1 text-sm">
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.registration.title')}>{t('popularServices.registration.title')}</CustomLink>
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.editInfo.title')}>{t('popularServices.editInfo.title')}</CustomLink>
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('services.audit.title')}>{t('services.audit.title')}</CustomLink>
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.license.title')}>{t('popularServices.license.title')}</CustomLink>
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('services.marketing.title')}>{t('services.marketing.title')}</CustomLink>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">จดทะเบียน</Link>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">แก้ไขข้อมูลนิติบุคคล</Link>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">บัญชีและตรวจสอบ</Link>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">ขอใบอนุญาต</Link>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">การตลาดออนไลน์</Link>
             </div>
           </div>
         </div>
@@ -179,9 +174,9 @@ export default function Footer() {
 
         {/* ที่อยู่บริษัท */}
         <div className="indent-5 text-left px-2">
-          <CustomLink href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap" section="Footer" item={t('companyName')}>
-            {t('companyName')}
-          </CustomLink>
+          <Link href="/under-construction" className="font-semibold text-lg text-[#A70909] block mb-4 whitespace-nowrap">
+            บริษัท วีรินทร์ทิรา จำกัด (สำนักงานใหญ่)
+          </Link>
           <div className="space-y-1">
             <p>Tax ID: 0105568020174</p>
             <p>222/172 ถนนสามวา แขวงบางชัน</p>
@@ -194,18 +189,18 @@ export default function Footer() {
         {/* เมนูลิงก์ */}
         <div className="flex justify-center gap-10 px-2">
           <div className="flex flex-col gap-2">
-            <CustomLink href="/promotion" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.promotion')}>{t('nav.promotion')}</CustomLink>
-            <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.download')}>{t('nav.download')}</CustomLink>
-            <CustomLink href="/under-construction" className="hover:underline text-[#A70909] font-medium" section="Footer" item={t('nav.contact')}>{t('nav.contact')}</CustomLink>
+            <Link href="/promotion" className="hover:underline text-[#A70909] font-medium">โปรโมชั่น</Link>
+            <Link href="/under-construction" className="hover:underline text-[#A70909] font-medium">ดาวน์โหลดเอกสาร</Link>
+            <Link href="/under-construction" className="hover:underline text-[#A70909] font-medium">ติดต่อเรา</Link>
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-[#A70909] font-medium">{t('footer.services')}</span>
+            <span className="text-[#A70909] font-medium">บริการ</span>
             <div className="ml-3 mt-1 space-y-1 text-sm">
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.registration.title')}>{t('popularServices.registration.title')}</CustomLink>
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.editInfo.title')}>{t('popularServices.editInfo.title')}</CustomLink>
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('services.audit.title')}>{t('services.audit.title')}</CustomLink>
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('popularServices.license.title')}>{t('popularServices.license.title')}</CustomLink>
-              <CustomLink href="/under-construction" className="text-[#A70909] block hover:underline" section="Footer" item={t('services.marketing.title')}>{t('services.marketing.title')}</CustomLink>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">จดทะเบียน</Link>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">แก้ไขข้อมูลนิติบุคคล</Link>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">บัญชีและตรวจสอบ</Link>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">ขอใบอนุญาต</Link>
+              <Link href="/under-construction" className="text-[#A70909] block hover:underline">การตลาดออนไลน์</Link>
             </div>
           </div>
         </div>
@@ -231,7 +226,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center py-4 border-t border-gray-200 text-sm text-gray-500">
-        {t('footerRights')}
+        © 2025 Virintira Co. Ltd. All rights reserved.
       </div>
     </footer>
   )

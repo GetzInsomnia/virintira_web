@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { FaChevronLeft } from 'react-icons/fa'
 import CustomLink from '@/components/CustomLink'
-import { useTranslations } from 'next-intl'
 
 interface MobileMenuViewProps {
   title: string
@@ -29,7 +28,6 @@ export default function MobileMenuView({
   index,
   current,
 }: MobileMenuViewProps) {
-  const t = useTranslations()
   const [enter, setEnter] = useState(false)
 
   useEffect(() => {
@@ -83,10 +81,9 @@ export default function MobileMenuView({
                   onClick={onClose}
                   className="text-black hover:text-[#A70909] transition font-medium text-base block"
                 >
-                  {item.label === t('mobileMenu.promotion') ? (
+                  {item.label.includes('โปรโมชั่น') ? (
                     <>
-                      {t('mobileMenu.promotion')}{' '}
-                      <span className="inline-block animate-bounce">🔥</span>
+                      โปรโมชั่น <span className="inline-block animate-bounce">🔥</span>
                     </>
                   ) : (
                     item.label

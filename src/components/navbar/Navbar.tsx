@@ -17,10 +17,8 @@ import SearchToggle from './SearchToggle'
 import SocialFloating from './SocialFloating'
 import CustomLink from '@/components/CustomLink'
 import { FaFire } from 'react-icons/fa'
-import { useTranslations } from 'next-intl'
 
 export default function Navbar() {
-  const t = useTranslations()
   const [isHoveringMenu, setIsHoveringMenu] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const hideTimer = useRef<NodeJS.Timeout | null>(null)
@@ -56,8 +54,8 @@ export default function Navbar() {
   }, [])
 
   const handleLogoClick = () => {
-    if (pathname === '/' || pathname === '/th' || pathname === '/en') {
-      // ถ้าอยู่หน้าแรก ให้ smooth scroll ไป hero section
+    if (pathname === '/') {
+      window.location.hash = 'herosection' // update hash for direct links
       const target = document.getElementById('herosection')
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' })
@@ -65,9 +63,7 @@ export default function Navbar() {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } else {
-      // ถ้าอยู่หน้าอื่น ให้ไปหน้าแรก
-      const currentLocale = pathname.split('/')[1] || 'th'
-      window.location.href = `/${currentLocale}`
+      window.location.href = '/#herosection'
     }
   }
 
@@ -95,7 +91,7 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 w-full z-50 bg-[#FFFEFE] min-h-[72px]"
+      className="fixed top-0 left-0 w-full z-50 bg-[#FFFEFE]"
     >
       <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
         {/* โลโก้ + ชื่อ */}
@@ -113,13 +109,13 @@ export default function Navbar() {
           <CustomLink
             href="/promotion"
             section="Navbar"
-            item={t('nav.promotion')}
+            item="โปรโมชั่น"
             className="flex items-center gap-1 font-medium text-black hover:text-[#A70909] transition relative
               after:content-[''] after:absolute after:bottom-[-24px] after:left-0 after:w-full after:h-[7px]
               after:bg-[#A70909] after:rounded-t-full after:scale-x-0 hover:after:scale-x-120 after:origin-middle after:transition-transform"
           >
             <FaFire className="text-[#A70909] animate-bounce" />
-            {t('nav.promotion')}
+            โปรโมชั่น
           </CustomLink>
 
           {/* 🧾 บริการ (เมก้าเมนู) */}
@@ -133,7 +129,7 @@ export default function Navbar() {
               after:bg-[#A70909] after:rounded-t-full
               after:transition-transform after:origin-middle
               ${isHoveringMenu ? 'text-[#A70909] after:scale-x-120' : 'text-black after:scale-x-0'}`}>
-              {t('nav.services')}
+              บริการ
             </span>
 
             {isHoveringMenu && (
@@ -153,26 +149,26 @@ export default function Navbar() {
           <CustomLink
             href="/under-construction"
             section="Navbar"
-            item={t('nav.download')}
+            item="ดาวน์โหลดเอกสาร"
             className="relative text-black hover:text-[#A70909] transition
               after:content-[''] after:absolute after:bottom-[-24px] after:left-0 after:w-full after:h-[7px]
               after:bg-[#A70909] after:rounded-t-full
               after:scale-x-0 hover:after:scale-x-120 after:origin-middle after:transition-transform"
           >
-            {t('nav.download')}
+            ดาวน์โหลดเอกสาร
           </CustomLink>
 
           {/* ☎️ ติดต่อเรา */}
           <CustomLink
             href="/under-construction"
             section="Navbar"
-            item={t('nav.contact')}
+            item="ติดต่อเรา"
             className="relative text-black hover:text-[#A70909] transition
               after:content-[''] after:absolute after:bottom-[-24px] after:left-0 after:w-full after:h-[7px]
               after:bg-[#A70909] after:rounded-t-full
               after:scale-x-0 hover:after:scale-x-120 after:origin-middle after:transition-transform"
           >
-            {t('nav.contact')}
+            ติดต่อเรา
           </CustomLink>
         </nav>
 
