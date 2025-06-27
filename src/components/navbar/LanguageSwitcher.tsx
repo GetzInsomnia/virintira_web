@@ -31,17 +31,11 @@ export default function LanguageSwitcher() {
     }
   }, [])
 
-  const localeRegex = new RegExp(`^/(${locales.join('|')})`)
-  const pathWithoutLocale = pathname.replace(localeRegex, '') || '/'
-  const query = searchParams.toString()
-  const href = `${pathWithoutLocale}${query ? `?${query}` : ''}`
-
   const changeLocale = (lang: string) => {
     setDropdownOpen(false)
-    router.push(href, { locale: lang })
-    router.refresh()
+    // ใช้ router.push โดยตรงกับ pathname ปัจจุบันและ locale ใหม่
+    router.push(pathname, { locale: lang })
   }
-
 
   return (
     <div ref={dropdownRef} className="relative">
