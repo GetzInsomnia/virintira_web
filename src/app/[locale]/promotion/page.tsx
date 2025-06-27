@@ -1,6 +1,8 @@
 import { useTranslations } from 'next-intl';
 import type { Metadata } from 'next';
 import PromotionSection from '@/components/PromotionSection';
+import { useLocale } from 'next-intl';
+import { useEffect } from 'react';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://virintira.com/promotion' },
@@ -8,6 +10,21 @@ export const metadata: Metadata = {
 
 export default function PromotionPage() {
   const t = useTranslations();
+  const locale = useLocale();
+
+  useEffect(() => {
+    console.log('🎉 PromotionPage Debug:', {
+      currentLocale: locale,
+      promoNewClientTitle: t('promo.newClient.title'),
+      promoAccountingTitle: t('promo.accounting.title'),
+      translationKeys: {
+        newClient: 'promo.newClient.title',
+        accounting: 'promo.accounting.title'
+      },
+      timestamp: new Date().toISOString()
+    });
+  }, [locale, t]);
+
   return (
     <main className="bg-[#FFFEFE]">
       <PromotionSection

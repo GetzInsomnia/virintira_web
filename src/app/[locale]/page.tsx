@@ -11,8 +11,6 @@ export const metadata: Metadata = {
 };
 
 function HomePageContent() {
-  // const t = useTranslations('home');
-
   return (
     <>
       <ScrollToHero />

@@ -1,6 +1,6 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import { locales, Locale } from '../../../i18n';
 import '../globals.css';
@@ -8,6 +8,7 @@ import localFont from 'next/font/local';
 import Navbar from '@/components/navbar/Navbar';
 import StructuredData from '@/components/StructuredData';
 import Footer from '@/components/Footer';
+import TranslationDebugger from '@/components/TranslationDebugger';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
@@ -78,6 +79,18 @@ function LocaleLayoutContent({
 }) {
   const messages = useMessages();
 
+  // Debug logging for layout
+  useEffect(() => {
+    console.log('🏗️ Layout Debug:', {
+      currentLocale: locale,
+      messagesKeys: Object.keys(messages),
+      messagesCount: Object.keys(messages).length,
+      hasHeroMessages: 'hero' in messages,
+      heroKeys: 'hero' in messages ? Object.keys(messages.hero) : [],
+      timestamp: new Date().toISOString()
+    })
+  }, [locale, messages])
+
   return (
     <html key={locale} lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
@@ -101,7 +114,7 @@ function LocaleLayoutContent({
         <NextIntlClientProvider 
           locale={locale} 
           messages={messages} 
-          key={`${locale}-${JSON.stringify(messages).slice(0, 100)}`}
+          key={locale}
         >
           <Navbar />
           <main
@@ -115,6 +128,7 @@ function LocaleLayoutContent({
             {children}
             <Footer />
           </main>
+          <TranslationDebugger />
         </NextIntlClientProvider>
       </body>
     </html>
@@ -129,6 +143,14 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }> 
 }) {
   const { locale } = await params;
+  
+  // Debug logging for server-side locale
+  console.log('🌐 Server Layout Debug:', {
+    requestedLocale: locale,
+    validLocales: locales,
+    isLocaleValid: locales.includes(locale as Locale),
+    timestamp: new Date().toISOString()
+  })
   
   // ตรวจสอบว่า locale ถูกต้องหรือไม่
   if (!locales.includes(locale as Locale)) {

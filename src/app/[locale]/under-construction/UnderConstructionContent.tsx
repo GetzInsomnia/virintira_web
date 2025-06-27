@@ -6,6 +6,7 @@ import BorderRevealButton from '@/components/BorderRevealButton'
 import { motion } from 'framer-motion'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)
@@ -22,6 +23,7 @@ function useIsMobile() {
 
 export default function UnderConstructionContent() {
   const t = useTranslations()
+  const locale = useLocale()
   const searchParams = useSearchParams()
   const section =
     searchParams.get('section') || t('underConstruction.unknownSection')
@@ -29,6 +31,19 @@ export default function UnderConstructionContent() {
 
   const [ctaExpanded, setCtaExpanded] = useState(false)
   const isMobile = useIsMobile()
+
+  useEffect(() => {
+    console.log('🚧 UnderConstruction Debug:', {
+      currentLocale: locale,
+      ucHeading: t('underConstruction.heading', { section, item }),
+      ucMessage: t('underConstruction.message'),
+      translationKeys: {
+        heading: 'underConstruction.heading',
+        message: 'underConstruction.message'
+      },
+      timestamp: new Date().toISOString()
+    });
+  }, [locale, t, section, item]);
 
   return (
     <div className="relative min-h-[100dvh] flex items-center justify-center text-center px-6 bg-white snap-start transition-all">

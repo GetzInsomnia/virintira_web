@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FaGlobe } from 'react-icons/fa'
-import { usePathname } from '../../../i18n/navigation'
+import { usePathname, useRouter } from '../../../i18n/navigation'
 import { useLocale } from 'next-intl'
 import { locales, localeInfo } from '../../../i18n'
 
@@ -12,6 +12,17 @@ export default function LanguageSwitcher() {
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const pathname = usePathname()
   const locale = useLocale()
+  const router = useRouter()
+
+  // Debug logging for current state
+  useEffect(() => {
+    console.log('🔍 LanguageSwitcher Debug:', {
+      currentLocale: locale,
+      currentPathname: pathname,
+      availableLocales: locales,
+      timestamp: new Date().toISOString()
+    })
+  }, [locale, pathname])
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev)
 
@@ -29,14 +40,38 @@ export default function LanguageSwitcher() {
   }, [])
 
   const changeLocale = async (lang: string) => {
+    console.log('🔄 Language Change Requested:', {
+      from: locale,
+      to: lang,
+      currentPath: pathname,
+      timestamp: new Date().toISOString()
+    })
+
     setDropdownOpen(false)
     
-    // Force a hard navigation to ensure fresh content
-    const currentPath = pathname
-    const newPath = `/${lang}${currentPath === '/' ? '' : currentPath}`
-    
-    // Use window.location for a complete page refresh
-    window.location.href = newPath
+    try {
+      console.log('📡 Attempting navigation with next-intl router...')
+      
+      // Use next-intl router for proper navigation
+      await router.replace(pathname, { locale: lang })
+      
+      console.log('✅ Navigation successful:', {
+        newLocale: lang,
+        pathname: pathname,
+        timestamp: new Date().toISOString()
+      })
+    } catch (error) {
+      console.error('❌ Navigation failed:', {
+        error: error,
+        fallbackToManual: true,
+        timestamp: new Date().toISOString()
+      })
+      
+      // Fallback to manual navigation
+      const newPath = `/${lang}${pathname === '/' ? '' : pathname}`
+      console.log('🔄 Using fallback navigation to:', newPath)
+      window.location.href = newPath
+    }
   }
 
   return (
